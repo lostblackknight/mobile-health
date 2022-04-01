@@ -1,0 +1,17 @@
+server:
+  port: 7008
+
+spring:
+  application:
+    name: bee-health-third-party
+  cloud:
+    nacos:
+      server-addr: 192.168.86.134:8848
+      config:
+        file-extension: yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: all
