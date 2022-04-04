@@ -1,0 +1,101 @@
+[
+  {
+    "class_name": "儿科",
+    "class_code": "200104358",
+    "dept_code": "200276750",
+    "dept_name": "小儿内分泌科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "外科",
+    "class_code": "200104209",
+    "dept_code": "200276313",
+    "dept_name": "小儿外科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "眼科",
+    "class_code": "200104061",
+    "dept_code": "200276247",
+    "dept_name": "小儿眼科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科",
+    "class_code": "200104358",
+    "dept_code": "200276151",
+    "dept_name": "小儿神经内科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科保健",
+    "class_code": "200104559",
+    "dept_code": "200102857",
+    "dept_name": "小儿消化内科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科保健",
+    "class_code": "200104559",
+    "dept_code": "200102855",
+    "dept_name": "小儿保健科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科",
+    "class_code": "200104358",
+    "dept_code": "200276548",
+    "dept_name": "行为发育科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科保健",
+    "class_code": "200104559",
+    "dept_code": "200102859",
+    "dept_name": "小儿康复科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科保健",
+    "class_code": "200104559",
+    "dept_code": "200102858",
+    "dept_name": "小儿呼吸内科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "中医科",
+    "class_code": "200104309",
+    "dept_code": "200276052",
+    "dept_name": "中医儿科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  },
+  {
+    "class_name": "儿科",
+    "class_code": "200104358",
+    "dept_code": "200276064",
+    "dept_name": "小儿内科",
+    "hospital_name": "北京天使儿童医院",
+    "hospital_code": "200026465",
+    "intro": ""
+  }
+]

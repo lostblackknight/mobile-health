@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import io.github.lostblackknight.model.dto.AreaDTO;
 import io.github.lostblackknight.admin.mapper.DictMapper;
 import io.github.lostblackknight.admin.service.DictService;
 import io.github.lostblackknight.admin.dto.DictOptionsDTO;
@@ -80,6 +81,37 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict>
             }
         }
         return SqlHelper.retBool(baseMapper.deleteBatchIds(ids));
+    }
+
+    @Override
+    public List<AreaDTO> getAreaList() {
+        final Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("dict_value", "area_list"));
+        final List<Dict> dictList = baseMapper.selectList(null);
+        final Long id = dict.getId();
+
+        return getAreaDTOS(dictList, id);
+    }
+
+    private List<AreaDTO> getAreaDTOS(List<Dict> dictList, Long id) {
+        return dictList.stream()
+                .filter(dict -> dict.getParentId().equals(id))
+                .sorted((o1, o2) -> Math.toIntExact((o1.getDictSort() - o2.getDictSort())))
+                .map(dict -> {
+                    final AreaDTO areaDTO = new AreaDTO();
+                    areaDTO.setLabel(dict.getDictLabel());
+                    areaDTO.setValue(dict.getDictValue());
+                    if (CollUtil.isEmpty(getAreaListChildren(dict.getId(), dictList))) {
+                        areaDTO.setChildren(null);
+                    } else {
+                        areaDTO.setChildren(getAreaListChildren(dict.getId(), dictList));
+                    }
+                    return areaDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+    private List<AreaDTO> getAreaListChildren(Long parentId, List<Dict> dictList) {
+        return getAreaDTOS(dictList, parentId);
     }
 
     private List<DictOptionsDTO> getDictOptionsDTOChildren(List<Dict> children) {

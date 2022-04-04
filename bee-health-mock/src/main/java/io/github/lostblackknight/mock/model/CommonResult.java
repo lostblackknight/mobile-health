@@ -1,4 +1,4 @@
-package io.github.lostblackknight.mock.support;
+package io.github.lostblackknight.mock.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

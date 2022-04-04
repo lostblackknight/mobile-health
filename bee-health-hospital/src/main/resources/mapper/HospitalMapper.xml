@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.hospital.mapper.HospitalMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.hospital.Hospital">
+            <id property="hospitalCode" column="hospital_code" jdbcType="VARCHAR"/>
+            <result property="hospitalName" column="hospital_name" jdbcType="VARCHAR"/>
+            <result property="provinceCode" column="province_code" jdbcType="VARCHAR"/>
+            <result property="cityCode" column="city_code" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="logo" column="logo" jdbcType="VARCHAR"/>
+            <result property="telephone" column="telephone" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="levelName" column="level_name" jdbcType="VARCHAR"/>
+            <result property="className" column="class_name" jdbcType="VARCHAR"/>
+            <result property="route" column="route" jdbcType="VARCHAR"/>
+            <result property="intro" column="intro" jdbcType="VARCHAR"/>
+            <result property="rules" column="rules" jdbcType="VARCHAR"/>
+            <result property="images" column="images" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        hospital_code,hospital_name,province_code,
+        city_code,address,logo,
+        telephone,status,level_name,
+        class_name,route,intro,
+        rules,images
+    </sql>
+</mapper>

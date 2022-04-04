@@ -1,0 +1,398 @@
+[
+  {
+    "class_name": "皮肤综合科",
+    "class_code": "200112553",
+    "dept_code": "200272625",
+    "dept_name": "皮肤病检查",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293860",
+    "dept_name": "疤痕疙瘩",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "脱发专科",
+    "class_code": "200112549",
+    "dept_code": "200293867",
+    "dept_name": "斑秃",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "脱发专科",
+    "class_code": "200112549",
+    "dept_code": "200293868",
+    "dept_name": "掉头发",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "疑难皮肤病",
+    "class_code": "200112552",
+    "dept_code": "200272912",
+    "dept_name": "白癜风",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "疑难皮肤病",
+    "class_code": "200112552",
+    "dept_code": "200272477",
+    "dept_name": "银屑病",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "疑难皮肤病",
+    "class_code": "200112552",
+    "dept_code": "200272726",
+    "dept_name": "牛皮癣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "疑难皮肤病",
+    "class_code": "200112552",
+    "dept_code": "200272623",
+    "dept_name": "鱼鳞病",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "脱发专科",
+    "class_code": "200112549",
+    "dept_code": "200272722",
+    "dept_name": "脱发",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293858",
+    "dept_name": "痘坑",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293857",
+    "dept_name": "痘印",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293852",
+    "dept_name": "酒糟鼻",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293851",
+    "dept_name": "祛斑",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293859",
+    "dept_name": "痘疤",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200272822",
+    "dept_name": "酒糟鼻",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200293849",
+    "dept_name": "祛痣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200272724",
+    "dept_name": "红血丝",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200272821",
+    "dept_name": "黄褐斑",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "青春痘科",
+    "class_code": "200112548",
+    "dept_code": "200293850",
+    "dept_name": "青春痘",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200272673",
+    "dept_name": "疤痕",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200272527",
+    "dept_name": "雀斑",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200273005",
+    "dept_name": "腋臭",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤美容科",
+    "class_code": "200112551",
+    "dept_code": "200272475",
+    "dept_name": "胎记",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "青春痘科",
+    "class_code": "200112548",
+    "dept_code": "200272721",
+    "dept_name": "痤疮",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293869",
+    "dept_name": "汗斑（花斑癣）",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293866",
+    "dept_name": "紫癜",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293865",
+    "dept_name": "脚气",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293864",
+    "dept_name": "毛囊炎",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293863",
+    "dept_name": "甲沟炎",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293870",
+    "dept_name": "鸡眼",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200273145",
+    "dept_name": "寻常疣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200273048",
+    "dept_name": "皮炎",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200273007",
+    "dept_name": "头癣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272914",
+    "dept_name": "体股癣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272913",
+    "dept_name": "灰指甲",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293862",
+    "dept_name": "皮肤瘙痒",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200293861",
+    "dept_name": "玫瑰糠疹",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272723",
+    "dept_name": "皮肤过敏",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272427",
+    "dept_name": "皮肤癣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272767",
+    "dept_name": "手足癣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272476",
+    "dept_name": "扁平疣",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272280",
+    "dept_name": "疥疮",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272526",
+    "dept_name": "荨麻疹",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  },
+  {
+    "class_name": "皮肤病专科",
+    "class_code": "200106966",
+    "dept_code": "200272474",
+    "dept_name": "湿疹",
+    "hospital_name": "太原肤康中医皮肤病医院",
+    "hospital_code": "200092161",
+    "intro": ""
+  }
+]

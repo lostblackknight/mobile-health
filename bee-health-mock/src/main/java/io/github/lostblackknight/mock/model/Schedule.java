@@ -1,11 +1,7 @@
-package io.github.lostblackknight.model.entity.hospital;
+package io.github.lostblackknight.mock.model;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,13 +9,11 @@ import java.util.Date;
  * 
  * @TableName t_schedule
  */
-@TableName(value ="t_schedule")
 @Data
-public class Schedule implements Serializable {
+public class Schedule {
     /**
      * 排班的id
      */
-    @TableId
     private String scheduleId;
 
     /**
@@ -101,7 +95,4 @@ public class Schedule implements Serializable {
      * 已预约的数量
      */
     private Integer yuYueNum;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

@@ -1,0 +1,2098 @@
+[
+  {
+    "area_id": 2,
+    "area_name": "广东",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2918,
+        "area_name": "广州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 5,
+        "area_name": "深圳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2920,
+        "area_name": "东莞",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2927,
+        "area_name": "惠州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2922,
+        "area_name": "佛山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2916,
+        "area_name": "珠海",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2919,
+        "area_name": "汕头",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2936,
+        "area_name": "清远",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2935,
+        "area_name": "梅州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2933,
+        "area_name": "茂名",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2934,
+        "area_name": "中山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2932,
+        "area_name": "肇庆",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2931,
+        "area_name": "揭阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2921,
+        "area_name": "汕尾",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2923,
+        "area_name": "韶关",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2924,
+        "area_name": "河源",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2925,
+        "area_name": "潮州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2926,
+        "area_name": "阳江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2928,
+        "area_name": "云浮",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2929,
+        "area_name": "湛江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2930,
+        "area_name": "江门",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3260,
+    "area_name": "湖南",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3274,
+        "area_name": "长沙",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3268,
+        "area_name": "湘潭",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3266,
+        "area_name": "株洲",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3270,
+        "area_name": "益阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3265,
+        "area_name": "怀化",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3273,
+        "area_name": "郴州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3271,
+        "area_name": "衡阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3263,
+        "area_name": "常德",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3261,
+        "area_name": "娄底",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3262,
+        "area_name": "岳阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3264,
+        "area_name": "张家界",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3267,
+        "area_name": "永州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3269,
+        "area_name": "湘西州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3272,
+        "area_name": "邵阳",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 2913,
+    "area_name": "北京",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2912,
+        "area_name": "北京",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3305,
+    "area_name": "上海",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3306,
+        "area_name": "上海",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3313,
+    "area_name": "香港",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3314,
+        "area_name": "香港",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3241,
+    "area_name": "河南",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3242,
+        "area_name": "郑州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3250,
+        "area_name": "洛阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3252,
+        "area_name": "开封",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3253,
+        "area_name": "平顶山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3254,
+        "area_name": "安阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3255,
+        "area_name": "商丘",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3246,
+        "area_name": "焦作",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3247,
+        "area_name": "濮阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3248,
+        "area_name": "漯河",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3251,
+        "area_name": "新乡",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3256,
+        "area_name": "周口",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3257,
+        "area_name": "南阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3259,
+        "area_name": "三门峡",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3258,
+        "area_name": "信阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3249,
+        "area_name": "济源",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3245,
+        "area_name": "许昌",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3244,
+        "area_name": "鹤壁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3243,
+        "area_name": "驻马店",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3275,
+    "area_name": "湖北",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3288,
+        "area_name": "天门",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3289,
+        "area_name": "咸宁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3290,
+        "area_name": "十堰",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3291,
+        "area_name": "仙桃",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3292,
+        "area_name": "恩施",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3286,
+        "area_name": "宜昌",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3287,
+        "area_name": "孝感",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3285,
+        "area_name": "潜江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3284,
+        "area_name": "神农架",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3283,
+        "area_name": "荆州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3282,
+        "area_name": "荆门",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3281,
+        "area_name": "襄阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3280,
+        "area_name": "鄂州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3279,
+        "area_name": "随州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3278,
+        "area_name": "黄冈",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3277,
+        "area_name": "黄石",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3276,
+        "area_name": "武汉",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3157,
+    "area_name": "海南",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3158,
+        "area_name": "海口",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3166,
+        "area_name": "琼海",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3165,
+        "area_name": "保亭",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3164,
+        "area_name": "万宁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3163,
+        "area_name": "昌江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3162,
+        "area_name": "东方",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3161,
+        "area_name": "琼中",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3160,
+        "area_name": "三亚",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3159,
+        "area_name": "白沙",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3168,
+        "area_name": "文昌",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3167,
+        "area_name": "乐东",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3169,
+        "area_name": "陵水",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3170,
+        "area_name": "儋州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3178,
+        "area_name": "临高",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3177,
+        "area_name": "中沙群岛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3176,
+        "area_name": "定安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3175,
+        "area_name": "西沙群岛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3174,
+        "area_name": "屯昌",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3173,
+        "area_name": "南沙群岛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3172,
+        "area_name": "澄迈",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3171,
+        "area_name": "五指山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 14974,
+        "area_name": "三沙",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3315,
+    "area_name": "重庆",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3316,
+        "area_name": "重庆",
+        "area_level": "3"
+      },
+      {
+        "area_id": 14973,
+        "area_name": "县级",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3092,
+    "area_name": "四川",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3103,
+        "area_name": "成都",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3102,
+        "area_name": "德阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3096,
+        "area_name": "凉山州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3107,
+        "area_name": "绵阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3110,
+        "area_name": "达州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3093,
+        "area_name": "攀枝花",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3095,
+        "area_name": "内江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3094,
+        "area_name": "乐山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3097,
+        "area_name": "南充",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3111,
+        "area_name": "遂宁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3113,
+        "area_name": "雅安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3112,
+        "area_name": "阿坝州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3109,
+        "area_name": "资阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3098,
+        "area_name": "宜宾",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3108,
+        "area_name": "自贡",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3106,
+        "area_name": "眉山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3105,
+        "area_name": "甘孜州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3104,
+        "area_name": "泸州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3101,
+        "area_name": "广安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3100,
+        "area_name": "广元",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3099,
+        "area_name": "巴中",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3124,
+    "area_name": "黑龙江",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3135,
+        "area_name": "绥化市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3137,
+        "area_name": "大兴安岭",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3136,
+        "area_name": "齐齐哈尔",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3134,
+        "area_name": "七台河",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3133,
+        "area_name": "鸡西",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3132,
+        "area_name": "牡丹江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3131,
+        "area_name": "黑河",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3130,
+        "area_name": "佳木斯",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3129,
+        "area_name": "鹤岗",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3128,
+        "area_name": "双鸭山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3127,
+        "area_name": "大庆",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3126,
+        "area_name": "伊春",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3125,
+        "area_name": "哈尔滨",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3201,
+    "area_name": "河北",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 21532,
+        "area_name": "雄安新区",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3212,
+        "area_name": "保定",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3211,
+        "area_name": "唐山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3210,
+        "area_name": "廊坊",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3209,
+        "area_name": "张家口",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3208,
+        "area_name": "承德",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3207,
+        "area_name": "沧州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3206,
+        "area_name": "秦皇岛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3205,
+        "area_name": "衡水",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3204,
+        "area_name": "邯郸",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3203,
+        "area_name": "邢台",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3202,
+        "area_name": "石家庄",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3213,
+    "area_name": "广西",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 14251,
+        "area_name": "宜州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3224,
+        "area_name": "贵港",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3227,
+        "area_name": "防城港",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3226,
+        "area_name": "钦州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3225,
+        "area_name": "贺州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3223,
+        "area_name": "百色",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3222,
+        "area_name": "玉林",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3221,
+        "area_name": "河池",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3220,
+        "area_name": "梧州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3219,
+        "area_name": "桂林",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3218,
+        "area_name": "柳州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3217,
+        "area_name": "来宾",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3216,
+        "area_name": "崇左",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3215,
+        "area_name": "南宁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3214,
+        "area_name": "北海",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3307,
+    "area_name": "天津",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3308,
+        "area_name": "天津",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 2937,
+    "area_name": "山西",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2938,
+        "area_name": "临汾",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2940,
+        "area_name": "大同",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2939,
+        "area_name": "吕梁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2941,
+        "area_name": "太原",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2942,
+        "area_name": "忻州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2943,
+        "area_name": "晋中",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2944,
+        "area_name": "长治",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2945,
+        "area_name": "晋城",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2946,
+        "area_name": "朔州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2947,
+        "area_name": "阳泉",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2948,
+        "area_name": "运城",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3228,
+    "area_name": "内蒙古",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3232,
+        "area_name": "鄂尔多斯",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3231,
+        "area_name": "阿拉善",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3230,
+        "area_name": "锡林郭勒",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3229,
+        "area_name": "呼和浩特",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3234,
+        "area_name": "呼伦贝尔",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3233,
+        "area_name": "巴彦淖尔",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3235,
+        "area_name": "乌兰察布",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3236,
+        "area_name": "乌海",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3240,
+        "area_name": "通辽",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3239,
+        "area_name": "赤峰",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3238,
+        "area_name": "兴安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3237,
+        "area_name": "包头",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 2949,
+    "area_name": "山东",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2959,
+        "area_name": "淄博",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2956,
+        "area_name": "泰安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2958,
+        "area_name": "济南",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2960,
+        "area_name": "滨州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2957,
+        "area_name": "济宁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2961,
+        "area_name": "潍坊",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2953,
+        "area_name": "威海",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2952,
+        "area_name": "德州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2955,
+        "area_name": "枣庄",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2950,
+        "area_name": "东营",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2951,
+        "area_name": "临沂",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2954,
+        "area_name": "日照",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2963,
+        "area_name": "聊城",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2962,
+        "area_name": "烟台",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2965,
+        "area_name": "菏泽",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2966,
+        "area_name": "青岛",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 2967,
+    "area_name": "云南",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2971,
+        "area_name": "大理州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2978,
+        "area_name": "曲靖",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2983,
+        "area_name": "迪庆",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2982,
+        "area_name": "西双版纳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2981,
+        "area_name": "红河州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2980,
+        "area_name": "玉溪",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2979,
+        "area_name": "楚雄州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2977,
+        "area_name": "昭通",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2976,
+        "area_name": "昆明",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2975,
+        "area_name": "文山州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2974,
+        "area_name": "思茅",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2973,
+        "area_name": "怒江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2972,
+        "area_name": "德宏州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2970,
+        "area_name": "保山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2969,
+        "area_name": "丽江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2968,
+        "area_name": "临沧",
+        "area_level": "3"
+      },
+      {
+        "area_id": 14962,
+        "area_name": "普洱",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 2993,
+    "area_name": "福建",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2994,
+        "area_name": "福州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2996,
+        "area_name": "南平",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2998,
+        "area_name": "莆田",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2999,
+        "area_name": "泉州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3001,
+        "area_name": "厦门",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3003,
+        "area_name": "武夷山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3002,
+        "area_name": "漳州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3000,
+        "area_name": "三明",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2997,
+        "area_name": "宁德",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2995,
+        "area_name": "龙岩",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3022,
+    "area_name": "浙江",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3033,
+        "area_name": "台州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3032,
+        "area_name": "温州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3031,
+        "area_name": "绍兴",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3030,
+        "area_name": "衢州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3029,
+        "area_name": "丽水",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3028,
+        "area_name": "舟山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3027,
+        "area_name": "金华",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3026,
+        "area_name": "嘉兴",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3025,
+        "area_name": "湖州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3024,
+        "area_name": "杭州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3023,
+        "area_name": "宁波",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3004,
+    "area_name": "安徽",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3021,
+        "area_name": "黄山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3020,
+        "area_name": "马鞍山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3019,
+        "area_name": "阜阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3009,
+        "area_name": "宣城",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3018,
+        "area_name": "铜陵",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3017,
+        "area_name": "蚌埠",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3016,
+        "area_name": "芜湖",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3015,
+        "area_name": "滁州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3014,
+        "area_name": "淮南",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3013,
+        "area_name": "淮北",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3012,
+        "area_name": "池州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3011,
+        "area_name": "巢湖",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3010,
+        "area_name": "宿州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3008,
+        "area_name": "安庆",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3007,
+        "area_name": "合肥",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3006,
+        "area_name": "六安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3005,
+        "area_name": "亳州",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3049,
+    "area_name": "西藏",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3056,
+        "area_name": "阿里",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3055,
+        "area_name": "那曲",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3054,
+        "area_name": "林芝",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3053,
+        "area_name": "昌都",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3052,
+        "area_name": "日喀则",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3051,
+        "area_name": "拉萨",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3050,
+        "area_name": "山南",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3057,
+    "area_name": "辽宁",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3061,
+        "area_name": "锦州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3070,
+        "area_name": "阜新",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3069,
+        "area_name": "铁岭",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3068,
+        "area_name": "抚顺",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3067,
+        "area_name": "沈阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3066,
+        "area_name": "丹东",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3065,
+        "area_name": "盘锦",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3064,
+        "area_name": "大连",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3063,
+        "area_name": "辽阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3062,
+        "area_name": "朝阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3060,
+        "area_name": "本溪",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3059,
+        "area_name": "葫芦岛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3058,
+        "area_name": "鞍山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3071,
+        "area_name": "营口",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3072,
+    "area_name": "江苏",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3073,
+        "area_name": "南京",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3084,
+        "area_name": "连云港",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3085,
+        "area_name": "镇江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3083,
+        "area_name": "苏州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3082,
+        "area_name": "盐城",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3081,
+        "area_name": "淮安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3080,
+        "area_name": "泰州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3079,
+        "area_name": "无锡",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3078,
+        "area_name": "扬州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3077,
+        "area_name": "徐州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3076,
+        "area_name": "常州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3075,
+        "area_name": "宿迁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3074,
+        "area_name": "南通",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3086,
+    "area_name": "宁夏",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3091,
+        "area_name": "中卫",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3090,
+        "area_name": "石嘴山",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3089,
+        "area_name": "吴忠",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3088,
+        "area_name": "固原",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3087,
+        "area_name": "银川",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3114,
+    "area_name": "贵州",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3123,
+        "area_name": "黔西南州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3122,
+        "area_name": "黔南州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3121,
+        "area_name": "黔东南州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3120,
+        "area_name": "铜仁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3119,
+        "area_name": "遵义",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3118,
+        "area_name": "毕节",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3117,
+        "area_name": "安顺",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3116,
+        "area_name": "六盘水",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3115,
+        "area_name": "贵阳",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3138,
+    "area_name": "新疆",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3143,
+        "area_name": "克拉玛依市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3142,
+        "area_name": "克孜勒苏柯尔克孜自治州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3141,
+        "area_name": "伊犁哈萨克自治州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3140,
+        "area_name": "五家渠",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3139,
+        "area_name": "乌鲁木齐市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3145,
+        "area_name": "吐鲁番市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3144,
+        "area_name": "博尔塔拉蒙古自治州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3146,
+        "area_name": "和田地区",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3156,
+        "area_name": "阿拉尔",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3147,
+        "area_name": "哈密市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3155,
+        "area_name": "阿勒泰地区",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3154,
+        "area_name": "阿克苏地区",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3153,
+        "area_name": "石河子",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3152,
+        "area_name": "昌吉回族自治州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3151,
+        "area_name": "巴音郭楞蒙古自治州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3150,
+        "area_name": "塔城地区",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3149,
+        "area_name": "图木舒克",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3148,
+        "area_name": "喀什地区",
+        "area_level": "3"
+      },
+      {
+        "area_id": 14956,
+        "area_name": "自治区直辖县级行政区划",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3179,
+    "area_name": "吉林",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3181,
+        "area_name": "白山市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3187,
+        "area_name": "通化市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3186,
+        "area_name": "辽源市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3185,
+        "area_name": "四平市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3184,
+        "area_name": "长春市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3183,
+        "area_name": "吉林市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3182,
+        "area_name": "白城市",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3189,
+        "area_name": "延边朝鲜族自治州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3188,
+        "area_name": "松原市",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3190,
+    "area_name": "陕西",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3191,
+        "area_name": "咸阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3200,
+        "area_name": "铜川",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3199,
+        "area_name": "西安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3192,
+        "area_name": "商洛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3198,
+        "area_name": "渭南",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3197,
+        "area_name": "汉中",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3196,
+        "area_name": "榆林",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3195,
+        "area_name": "延安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3194,
+        "area_name": "宝鸡",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3193,
+        "area_name": "安康",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3293,
+    "area_name": "江西",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3303,
+        "area_name": "萍乡",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3294,
+        "area_name": "鹰潭",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3295,
+        "area_name": "上饶",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3296,
+        "area_name": "九江",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3297,
+        "area_name": "南昌",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3298,
+        "area_name": "吉安",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3299,
+        "area_name": "宜春",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3300,
+        "area_name": "抚州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3301,
+        "area_name": "新余",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3302,
+        "area_name": "景德镇",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3304,
+        "area_name": "赣州",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 2984,
+    "area_name": "青海",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 2987,
+        "area_name": "玉树",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2986,
+        "area_name": "海东",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2985,
+        "area_name": "西宁",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2989,
+        "area_name": "海南州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2988,
+        "area_name": "黄南",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2990,
+        "area_name": "海北州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2991,
+        "area_name": "果洛",
+        "area_level": "3"
+      },
+      {
+        "area_id": 2992,
+        "area_name": "海西",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3034,
+    "area_name": "甘肃",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3035,
+        "area_name": "兰州",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3044,
+        "area_name": "嘉峪关",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3043,
+        "area_name": "金昌",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3042,
+        "area_name": "酒泉",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3041,
+        "area_name": "陇南",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3040,
+        "area_name": "平凉",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3039,
+        "area_name": "庆阳",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3038,
+        "area_name": "天水",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3037,
+        "area_name": "武威",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3036,
+        "area_name": "张掖",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3046,
+        "area_name": "白银",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3045,
+        "area_name": "定西",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3047,
+        "area_name": "甘南",
+        "area_level": "3"
+      },
+      {
+        "area_id": 3048,
+        "area_name": "临夏",
+        "area_level": "3"
+      }
+    ]
+  },
+  {
+    "area_id": 3311,
+    "area_name": "澳门",
+    "area_level": "2",
+    "children": [
+      {
+        "area_id": 3312,
+        "area_name": "澳门",
+        "area_level": "3"
+      }
+    ]
+  }
+]

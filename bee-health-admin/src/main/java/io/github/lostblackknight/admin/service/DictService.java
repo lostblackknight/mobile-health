@@ -1,6 +1,7 @@
 package io.github.lostblackknight.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import io.github.lostblackknight.model.dto.AreaDTO;
 import io.github.lostblackknight.admin.dto.DictOptionsDTO;
 import io.github.lostblackknight.model.entity.admin.Dict;
 
@@ -20,4 +21,6 @@ public interface DictService extends IService<Dict> {
     boolean removeDictById(Long id);
 
     boolean removeBatchDictByIds(List<Long> ids);
+
+    List<AreaDTO> getAreaList();
 }

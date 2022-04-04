@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.hospital.mapper.ScheduleMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.hospital.Schedule">
+            <id property="scheduleId" column="schedule_id" jdbcType="VARCHAR"/>
+            <result property="hospitalCode" column="hospital_code" jdbcType="VARCHAR"/>
+            <result property="hospitalName" column="hospital_name" jdbcType="VARCHAR"/>
+            <result property="deptCode" column="dept_code" jdbcType="VARCHAR"/>
+            <result property="deptName" column="dept_name" jdbcType="VARCHAR"/>
+            <result property="doctorName" column="doctor_name" jdbcType="VARCHAR"/>
+            <result property="expert" column="expert" jdbcType="VARCHAR"/>
+            <result property="illNameList" column="ill_name_list" jdbcType="VARCHAR"/>
+            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+            <result property="levelName" column="level_name" jdbcType="VARCHAR"/>
+            <result property="date" column="date" jdbcType="TIMESTAMP"/>
+            <result property="week" column="week" jdbcType="VARCHAR"/>
+            <result property="timeType" column="time_type" jdbcType="VARCHAR"/>
+            <result property="amount" column="amount" jdbcType="DECIMAL"/>
+            <result property="yuYueState" column="yu_yue_state" jdbcType="INTEGER"/>
+            <result property="yuYueMax" column="yu_yue_max" jdbcType="INTEGER"/>
+            <result property="yuYueNum" column="yu_yue_num" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        schedule_id,hospital_code,hospital_name,
+        dept_code,dept_name,doctor_name,
+        expert,ill_name_list,icon,
+        level_name,date,week,
+        time_type,amount,yu_yue_state,
+        yu_yue_max,yu_yue_num
+    </sql>
+</mapper>

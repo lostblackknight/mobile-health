@@ -1,8 +1,5 @@
-package io.github.lostblackknight.model.entity.hospital;
+package io.github.lostblackknight.mock.model;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,13 +8,11 @@ import java.io.Serializable;
  * 
  * @TableName t_hospital
  */
-@TableName(value ="t_hospital")
 @Data
-public class Hospital implements Serializable {
+public class Hospital {
     /**
      * 医院的编码
      */
-    @TableId
     private String hospitalCode;
 
     /**
@@ -84,7 +79,4 @@ public class Hospital implements Serializable {
      * 医院的相关图片
      */
     private String images;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

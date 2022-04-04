@@ -6,7 +6,7 @@ spring:
     name: bee-health-gateway
   cloud:
     nacos:
-      server-addr: 192.168.86.134:8848
+      server-addr: 192.168.86.135:8848
       config:
         file-extension: yaml
     gateway:

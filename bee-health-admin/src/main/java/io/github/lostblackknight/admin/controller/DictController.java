@@ -1,12 +1,11 @@
 package io.github.lostblackknight.admin.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import io.github.lostblackknight.admin.dto.DictOptionsDTO;
 import io.github.lostblackknight.admin.service.DictService;
 import io.github.lostblackknight.admin.support.TokenInfoContextHolder;
 import io.github.lostblackknight.admin.vo.DictAddForm;
 import io.github.lostblackknight.admin.vo.DictEditForm;
-import io.github.lostblackknight.admin.dto.DictOptionsDTO;
-import io.github.lostblackknight.admin.vo.DictPageQueryVO;
 import io.github.lostblackknight.model.dto.TokenInfoDTO;
 import io.github.lostblackknight.model.entity.admin.Dict;
 import io.github.lostblackknight.model.vo.CommonResult;
@@ -40,8 +39,8 @@ public class DictController {
     }
 
     @GetMapping("/dict")
-    public CommonResult<?> getDict(DictPageQueryVO dictPageQueryVO) {
-        List<Dict> dictList = dictService.getDict(dictPageQueryVO.getDictLabel());
+    public CommonResult<?> getDict(@RequestParam(required = false) String dictLabel) {
+        List<Dict> dictList = dictService.getDict(dictLabel);
         return CommonResult.success(dictList);
     }
 

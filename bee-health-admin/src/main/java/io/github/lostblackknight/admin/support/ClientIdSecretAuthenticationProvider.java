@@ -9,6 +9,7 @@ import io.github.lostblackknight.admin.service.RoleService;
 import io.github.lostblackknight.model.entity.admin.HospitalClientDetail;
 import io.github.lostblackknight.model.entity.admin.Role;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +29,7 @@ import java.util.stream.Collectors;
  */
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class ClientIdSecretAuthenticationProvider implements AuthenticationProvider {
 
     private final HospitalClientDetailService hospitalClientDetailService;
@@ -42,6 +44,7 @@ public class ClientIdSecretAuthenticationProvider implements AuthenticationProvi
         if (StrUtil.isNotEmpty(clientId)) {
             wrapper.eq("hospital_id", clientId);
         }
+        log.info("请求的客户端id为：{}", clientId);
         final HospitalClientDetail hospitalClientDetail = hospitalClientDetailService.getOne(wrapper);
         if (hospitalClientDetail == null || hospitalClientDetail.getStatus() != 0) {
             throw new BadCredentialsException("Bad credentials");
