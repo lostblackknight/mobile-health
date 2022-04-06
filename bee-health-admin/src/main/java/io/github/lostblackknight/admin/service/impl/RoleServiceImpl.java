@@ -3,10 +3,8 @@ package io.github.lostblackknight.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.lostblackknight.admin.mapper.RoleMapper;
-import io.github.lostblackknight.admin.service.HospitalClientDetailRoleService;
 import io.github.lostblackknight.admin.service.RoleService;
 import io.github.lostblackknight.admin.service.UserRoleService;
-import io.github.lostblackknight.model.entity.admin.HospitalClientDetailRole;
 import io.github.lostblackknight.model.entity.admin.Role;
 import io.github.lostblackknight.model.entity.admin.UserRole;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +26,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
         implements RoleService {
 
     private final UserRoleService userRoleService;
-    private final HospitalClientDetailRoleService hospitalClientDetailRoleService;
 
     @Override
     public List<Role> getRolesByUserId(Long id) {
@@ -41,17 +38,29 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
     }
 
     @Override
-    public List<Role> getRolesByHospitalClientDetailId(Long id) {
-        final List<Long> roleIds = hospitalClientDetailRoleService.list(new QueryWrapper<HospitalClientDetailRole>().eq("hospital_client_detail_id", id))
-                .stream()
-                .map(HospitalClientDetailRole::getRoleId)
-                .collect(Collectors.toList());
-        return baseMapper.selectBatchIds(roleIds);
+    public Role getRoleByRoleTag(String tag) {
+        return baseMapper.selectOne(new QueryWrapper<Role>().eq("tag", tag));
     }
 
     @Override
-    public Role getRoleByRoleTag(String tag) {
-        return baseMapper.selectOne(new QueryWrapper<Role>().eq("tag", tag));
+    public boolean removeRoleById(Long id) {
+        final long count = userRoleService.count(new QueryWrapper<UserRole>()
+                .eq("role_id", id));
+        if (count > 0) {
+            return false;
+        }
+        return removeById(id);
+    }
+
+    @Override
+    public boolean removeBatchRoleById(List<Long> ids) {
+        for (Long id : ids) {
+            final long count = userRoleService.count(new QueryWrapper<UserRole>().eq("role_id", id));
+            if (count > 0) {
+                return false;
+            }
+        }
+        return removeBatchByIds(ids);
     }
 }
 

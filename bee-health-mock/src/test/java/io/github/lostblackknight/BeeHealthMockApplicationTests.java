@@ -16,8 +16,6 @@ class BeeHealthMockApplicationTests {
 
         final String token = template.getToken();
         System.out.println(token);
-        final String refreshToken = template.getRefreshToken();
-        System.out.println(refreshToken);
     }
 
 }

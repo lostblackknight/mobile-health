@@ -4,9 +4,13 @@ server:
 spring:
   application:
     name: bee-health-third-party
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 100MB
   cloud:
     nacos:
-      server-addr: 192.168.86.135:8848
+      server-addr: 192.168.86.136:8848
       config:
         file-extension: yaml
 

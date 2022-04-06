@@ -23,8 +23,7 @@ public class BeeHealthTemplate {
     private String clientSecret = "";
 
     public static final String HOSPITAL_API = "http://localhost:7001/api/hospital";
-    public static final String TOKEN_API = "http://localhost:7001/api/admin/token/hospital";
-    public static final String REFRESH_TOKEN_API = "http://localhost:7001/api/admin/token/hospital/refresh";
+    public static final String TOKEN_API = "http://localhost:7001/api/hospital/token";
     public static final String AUTH_PREFIX = "Bearer ";
 
 
@@ -40,10 +39,6 @@ public class BeeHealthTemplate {
     public BeeHealthTemplate(String clientId, String clientSecret) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-    }
-
-    public String getRefreshToken() {
-        return cache.get("refreshToken");
     }
 
     public String getToken() {
@@ -91,9 +86,7 @@ public class BeeHealthTemplate {
             // 获取成功
             final Map<String, Object> data = commonResult.getData();
             String accessToken = (String) data.get("access_token");
-            String refreshToken = (String) data.get("refresh_token");
             cache.put("accessToken", accessToken);
-            cache.put("refreshToken", refreshToken);
         } else {
             throw new RuntimeException("token 请求失败");
         }

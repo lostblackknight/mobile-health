@@ -3,10 +3,13 @@ server:
 
 spring:
   application:
+    admin:
+      enabled: true
+      jmx-name: org.springframework.boot:type=Admin,name=SpringApplication
     name: bee-health-gateway
   cloud:
     nacos:
-      server-addr: 192.168.86.135:8848
+      server-addr: 192.168.86.136:8848
       config:
         file-extension: yaml
     gateway:
@@ -59,12 +62,12 @@ spring:
             - Path=/api/topic/**
           filters:
             - RewritePath=/api/topic/?(?<segment>.*), /$\{segment}
-        - id: auth_route
-          uri: lb://bee-health-auth:7010
+        - id: uaa_route
+          uri: lb://bee-health-uaa:7010
           predicates:
-            - Path=/api/auth/**
+            - Path=/api/uaa/**
           filters:
-            - RewritePath=/api/auth/?(?<segment>.*), /$\{segment}
+            - RewritePath=/api/uaa/?(?<segment>.*), /$\{segment}
 
 management:
   endpoints:
@@ -75,7 +78,3 @@ management:
 jwt:
   access-token:
     secret: secret-access
-    expires-at: 30000
-  refresh-token:
-    secret: secret-refresh
-    expires-at: 30000

@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import io.github.lostblackknight.model.dto.AreaDTO;
 import io.github.lostblackknight.admin.mapper.DictMapper;
 import io.github.lostblackknight.admin.service.DictService;
-import io.github.lostblackknight.admin.dto.DictOptionsDTO;
+import io.github.lostblackknight.model.dto.DictOptionsDTO;
 import io.github.lostblackknight.model.entity.admin.Dict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

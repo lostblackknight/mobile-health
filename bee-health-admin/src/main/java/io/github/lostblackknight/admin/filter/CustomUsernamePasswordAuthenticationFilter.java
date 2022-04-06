@@ -5,7 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.lostblackknight.admin.support.CustomUserDetails;
 import io.github.lostblackknight.model.vo.CommonResult;
-import io.github.lostblackknight.model.vo.form.UsernamePasswordLoginForm;
+import io.github.lostblackknight.admin.vo.UsernamePasswordLoginForm;
 import io.github.lostblackknight.properties.JwtProperties;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,7 @@
 package io.github.lostblackknight.hospital.filter;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.lostblackknight.hospital.support.TokenInfoContextHolder;
@@ -21,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,8 +35,14 @@ public class TokenInfoFilter extends OncePerRequestFilter {
     /**
      * 不需要授权的请求
      */
-    private static final List<AntPathRequestMatcher> ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(Arrays.asList(
+    private static final List<AntPathRequestMatcher> ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
             new AntPathRequestMatcher("/token/**")
+    ));
+
+    /**
+     * feign远程调用的请求
+     */
+    private static final List<AntPathRequestMatcher> INTERNAL_SERVER_ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
     ));
 
     @Override
@@ -61,6 +67,14 @@ public class TokenInfoFilter extends OncePerRequestFilter {
      */
     private Authentication attemptAuthorization(HttpServletRequest request) throws JsonProcessingException {
         String tokenInfo = request.getHeader("token-info");
+        if (StrUtil.isEmpty(tokenInfo)) {
+            // 内部服务调用
+            if (isInternalServerRequest(request)) {
+                this.logger.info("Feign 远程调用 添加内部服务角色");
+                return new UsernamePasswordAuthenticationToken("internalServer", null, List.of(new SimpleGrantedAuthority("service")));
+            }
+            return null;
+        }
         final ObjectMapper mapper = new ObjectMapper();
         final TokenInfoDTO tokenInfoDTO = mapper.readValue(tokenInfo, TokenInfoDTO.class);
         final List<String> roles = tokenInfoDTO.getRoles();
@@ -92,6 +106,15 @@ public class TokenInfoFilter extends OncePerRequestFilter {
 
     private boolean notRequiresAuthorization(HttpServletRequest request) {
         for (AntPathRequestMatcher antPathRequestMatcher : ANT_PATH_REQUEST_MATCHERS) {
+            if (antPathRequestMatcher.matches(request)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isInternalServerRequest(HttpServletRequest request) {
+        for (AntPathRequestMatcher antPathRequestMatcher : INTERNAL_SERVER_ANT_PATH_REQUEST_MATCHERS) {
             if (antPathRequestMatcher.matches(request)) {
                 return true;
             }

@@ -1,7 +1,7 @@
 package io.github.lostblackknight.admin.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import io.github.lostblackknight.admin.dto.DictOptionsDTO;
+import io.github.lostblackknight.model.dto.DictOptionsDTO;
 import io.github.lostblackknight.admin.service.DictService;
 import io.github.lostblackknight.admin.support.TokenInfoContextHolder;
 import io.github.lostblackknight.admin.vo.DictAddForm;

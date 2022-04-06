@@ -6,7 +6,7 @@ spring:
     name: bee-health-search
   cloud:
     nacos:
-      server-addr: 192.168.86.135:8848
+      server-addr: 192.168.86.136:8848
       config:
         file-extension: yaml
 

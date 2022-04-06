@@ -2,7 +2,7 @@ package io.github.lostblackknight.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.github.lostblackknight.model.dto.AreaDTO;
-import io.github.lostblackknight.admin.dto.DictOptionsDTO;
+import io.github.lostblackknight.model.dto.DictOptionsDTO;
 import io.github.lostblackknight.model.entity.admin.Dict;
 
 import java.util.List;

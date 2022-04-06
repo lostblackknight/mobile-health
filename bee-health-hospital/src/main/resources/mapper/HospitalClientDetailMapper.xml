@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.hospital.mapper.HospitalClientDetailMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.hospital.HospitalClientDetail">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="hospitalId" column="hospital_id" jdbcType="VARCHAR"/>
+            <result property="hospitalSecret" column="hospital_secret" jdbcType="VARCHAR"/>
+            <result property="hospitalName" column="hospital_name" jdbcType="VARCHAR"/>
+            <result property="apiUrl" column="api_url" jdbcType="VARCHAR"/>
+            <result property="contactsName" column="contacts_name" jdbcType="VARCHAR"/>
+            <result property="contactsPhone" column="contacts_phone" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,hospital_id,hospital_secret,
+        hospital_name,api_url,contacts_name,
+        contacts_phone,status,create_time,
+        update_time
+    </sql>
+</mapper>

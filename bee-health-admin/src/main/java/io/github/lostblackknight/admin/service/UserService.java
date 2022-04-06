@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.github.lostblackknight.model.dto.PageDTO;
 import io.github.lostblackknight.model.entity.admin.User;
 
+import java.util.List;
+
 /**
 * @author chensixiang
 * @description 针对表【t_user(用户表)】的数据库操作Service
@@ -13,9 +15,19 @@ public interface UserService extends IService<User> {
 
     User getUserById(Long id);
 
-    PageDTO<User> getUsersByPage(Long pageNum, Long pageSize);
+    PageDTO<User> getUsersByPage(Long pageNum, Long pageSize, User user);
 
-    boolean createUser(User user);
+    boolean createUser(User user, List<Long> roleIds);
 
     boolean updateUserPassword(Long id, String password);
+
+    boolean modifyUser(User user, List<Long> roleIds);
+
+    boolean removeUser(Long id);
+
+    boolean removeBatchUser(List<Long> ids);
+
+    boolean modifyUserStatusById(Long id, Integer status);
+
+    boolean resetUserPasswordById(Long id, String password);
 }

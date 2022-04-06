@@ -6,7 +6,7 @@ spring:
     name: bee-health-admin
   cloud:
     nacos:
-      server-addr: 192.168.86.135:8848
+      server-addr: 192.168.86.136:8848
       config:
         file-extension: yaml
   datasource:
@@ -23,6 +23,7 @@ mybatis-plus:
   configuration:
     cache-enabled: false # 关闭二级缓存
     local-cache-scope: statement # 关闭一级缓存
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     banner: false # 关闭控制台logo
 
@@ -35,10 +36,10 @@ management:
 jwt:
   access-token:
     secret: secret-access
-    expires-at: 30000
+    expires-at: 30 # 30分钟
   refresh-token:
     secret: secret-refresh
-    expires-at: 30000
+    expires-at: 1440 # 1天
 logging:
   level:
     io.github.lostblackknight.admin: info

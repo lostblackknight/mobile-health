@@ -6,7 +6,7 @@ spring:
     name: bee-health-hospital
   cloud:
     nacos:
-      server-addr: 192.168.86.135:8848
+      server-addr: 192.168.86.136:8848
       config:
         file-extension: yaml
   datasource:
@@ -18,8 +18,21 @@ spring:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
 
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    cache-enabled: false # 关闭二级缓存
+    local-cache-scope: statement # 关闭一级缓存
+  global-config:
+    banner: false # 关闭控制台logo
+
 management:
   endpoints:
     web:
       exposure:
         include: all
+
+jwt:
+  access-token:
+    secret: secret-access
+    expires-at: 525600 # 1年

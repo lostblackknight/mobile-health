@@ -14,7 +14,9 @@ public interface RoleService extends IService<Role> {
 
     List<Role> getRolesByUserId(Long id);
 
-    List<Role> getRolesByHospitalClientDetailId(Long id);
-
     Role getRoleByRoleTag(String tag);
+
+    boolean removeRoleById(Long id);
+
+    boolean removeBatchRoleById(List<Long> ids);
 }

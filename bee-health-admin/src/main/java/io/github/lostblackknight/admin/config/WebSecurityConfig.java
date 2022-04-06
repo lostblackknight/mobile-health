@@ -1,9 +1,7 @@
 package io.github.lostblackknight.admin.config;
 
-import io.github.lostblackknight.admin.filter.ClientIdSecretAuthenticationFilter;
 import io.github.lostblackknight.admin.filter.CustomUsernamePasswordAuthenticationFilter;
 import io.github.lostblackknight.admin.filter.TokenInfoFilter;
-import io.github.lostblackknight.admin.support.ClientIdSecretAuthenticationProvider;
 import io.github.lostblackknight.properties.JwtProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -34,12 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtProperties jwtProperties;
 
-    private final ClientIdSecretAuthenticationProvider clientIdSecretAuthenticationProvider;
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-        auth.authenticationProvider(clientIdSecretAuthenticationProvider);
     }
 
     @Override
@@ -47,9 +42,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/token/**").permitAll();
+        http.authorizeRequests().antMatchers("/roles/tag/**", "/roles/batch/**").hasAnyAuthority("admin", "service");
         http.authorizeRequests().antMatchers("/**").hasAuthority("admin");
         http.addFilter(usernamePasswordAuthenticationFilter());
-        http.addFilterAfter(clientIdSecretAuthenticationFilter(), CustomUsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(tokenInfoFilter(), CustomUsernamePasswordAuthenticationFilter.class);
     }
 
@@ -67,11 +62,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CustomUsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter() throws Exception {
         return new CustomUsernamePasswordAuthenticationFilter(authenticationManagerBean(), jwtProperties);
-    }
-
-    @Bean
-    public ClientIdSecretAuthenticationFilter clientIdSecretAuthenticationFilter() throws Exception {
-        return new ClientIdSecretAuthenticationFilter(authenticationManagerBean(), jwtProperties);
     }
 
     @Bean
