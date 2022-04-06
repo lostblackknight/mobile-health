@@ -51,6 +51,7 @@ public class TokenInfoFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
             return;
         }
+        logger.info("开始授权");
         Authentication authenticationResult = attemptAuthorization(request);
         if (authenticationResult == null) {
             chain.doFilter(request, response);

@@ -1,17 +1,21 @@
 package io.github.lostblackknight.admin.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.github.lostblackknight.admin.client.HospitalClient;
 import io.github.lostblackknight.admin.mapper.RoleMapper;
 import io.github.lostblackknight.admin.service.RoleService;
 import io.github.lostblackknight.admin.service.UserRoleService;
 import io.github.lostblackknight.model.entity.admin.Role;
 import io.github.lostblackknight.model.entity.admin.UserRole;
+import io.github.lostblackknight.model.vo.CommonResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -26,6 +30,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
         implements RoleService {
 
     private final UserRoleService userRoleService;
+
+    private final HospitalClient hospitalClient;
 
     @Override
     public List<Role> getRolesByUserId(Long id) {
@@ -49,6 +55,15 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
         if (count > 0) {
             return false;
         }
+        final CommonResult<Map<String, Object>> result = hospitalClient.getRelationCountByRoleId(id);
+        if (result.getCode() == 1) {
+            if (ObjectUtil.isNotEmpty(result.getData().get("count"))) {
+                Integer count1 = (Integer) result.getData().get("count");
+                if (count1 > 0) {
+                    return false;
+                }
+            }
+        }
         return removeById(id);
     }
 
@@ -58,6 +73,15 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
             final long count = userRoleService.count(new QueryWrapper<UserRole>().eq("role_id", id));
             if (count > 0) {
                 return false;
+            }
+            final CommonResult<Map<String, Object>> result = hospitalClient.getRelationCountByRoleId(id);
+            if (result.getCode() == 1) {
+                if (ObjectUtil.isNotEmpty(result.getData().get("count"))) {
+                    Long count1 = (Long) result.getData().get("count");
+                    if (count1 > 0) {
+                        return false;
+                    }
+                }
             }
         }
         return removeBatchByIds(ids);
