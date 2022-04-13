@@ -11,6 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AliYunProperties {
 
     private Oss oss;
+    private Sms sms;
 
     @Data
     public static class Oss {

@@ -45,7 +45,8 @@ public class TokenInfoFilter extends OncePerRequestFilter {
      */
     private static final List<AntPathRequestMatcher> INTERNAL_SERVER_ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
             new AntPathRequestMatcher("/roles/tag/**"),
-            new AntPathRequestMatcher("/roles/batch/**")
+            new AntPathRequestMatcher("/roles/batch/**"),
+            new AntPathRequestMatcher("/dict/**")
     ));
 
     @Override

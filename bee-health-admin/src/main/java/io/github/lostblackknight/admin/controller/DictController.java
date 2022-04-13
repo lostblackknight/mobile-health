@@ -44,6 +44,12 @@ public class DictController {
         return CommonResult.success(dictList);
     }
 
+    @GetMapping("/dict/dictValue/{dictValue}")
+    public CommonResult<Dict> getDictByDictValue(@PathVariable String dictValue) {
+        Dict dict = dictService.getDictByDictValue(dictValue);
+        return CommonResult.success(dict);
+    }
+
     @PostMapping("/dict")
     public CommonResult<?> createDict(@RequestBody DictAddForm dictAddForm) {
         final Dict dict = new Dict();

@@ -92,6 +92,11 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict>
         return getAreaDTOS(dictList, id);
     }
 
+    @Override
+    public Dict getDictByDictValue(String dictValue) {
+        return baseMapper.selectOne(new QueryWrapper<Dict>().eq("dict_value", dictValue));
+    }
+
     private List<AreaDTO> getAreaDTOS(List<Dict> dictList, Long id) {
         return dictList.stream()
                 .filter(dict -> dict.getParentId().equals(id))

@@ -23,4 +23,6 @@ public interface DictService extends IService<Dict> {
     boolean removeBatchDictByIds(List<Long> ids);
 
     List<AreaDTO> getAreaList();
+
+    Dict getDictByDictValue(String dictValue);
 }

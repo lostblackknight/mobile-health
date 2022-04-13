@@ -48,7 +48,9 @@ public class JwtAuthorizationFilter implements GlobalFilter, Ordered {
     private final List<String> notRequiredAuthorizationUri = List.of(
             "/api/admin/token/**",
             "/api/hospital/token/**",
-            "/api/member/token/**"
+            "/api/member/token/**",
+            "/api/thirdpary/**",
+            "/api/member/sms/sendCode/**"
     );
 
     private final JwtProperties jwtProperties;

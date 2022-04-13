@@ -1,5 +1,6 @@
 package io.github.lostblackknight.hospital.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.lostblackknight.model.entity.hospital.Hospital;
 import io.github.lostblackknight.hospital.service.HospitalService;

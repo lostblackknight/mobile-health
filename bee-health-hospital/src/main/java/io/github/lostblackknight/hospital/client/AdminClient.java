@@ -1,5 +1,6 @@
 package io.github.lostblackknight.hospital.client;
 
+import io.github.lostblackknight.model.entity.admin.Dict;
 import io.github.lostblackknight.model.entity.admin.Role;
 import io.github.lostblackknight.model.vo.CommonResult;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -20,4 +21,7 @@ public interface AdminClient {
 
     @GetMapping("/roles/batch")
     CommonResult<List<Role>> getRolesByIds(@RequestParam List<Long> ids);
+
+    @GetMapping("/dict/dictValue/{dictValue}")
+    CommonResult<Dict> getDictByDictValue(@PathVariable String dictValue);
 }

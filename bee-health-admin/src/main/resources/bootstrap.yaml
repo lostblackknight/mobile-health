@@ -6,7 +6,7 @@ spring:
     name: bee-health-admin
   cloud:
     nacos:
-      server-addr: 192.168.86.136:8848
+      server-addr: 192.168.86.137:8848
       config:
         file-extension: yaml
   datasource:
@@ -36,7 +36,7 @@ management:
 jwt:
   access-token:
     secret: secret-access
-    expires-at: 30 # 30分钟
+    expires-at: 240 # 2小时
   refresh-token:
     secret: secret-refresh
     expires-at: 1440 # 1天
