@@ -71,30 +71,32 @@ public class HospitalServiceImpl implements HospitalService {
     public List<HospitalESModel> searchHospital(HospitalSearchParam param) {
         final BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
 
-        boolQueryBuilder.must(QueryBuilders.matchQuery("hospitalName", param.getHospitalName()));
+        if (StrUtil.isNotEmpty(param.getHospitalName())) {
+            boolQueryBuilder.must(QueryBuilders.matchQuery("hospitalName", param.getHospitalName()));
+        }
 
         if (StrUtil.isNotEmpty(param.getLevelName())) {
-            boolQueryBuilder.must(QueryBuilders.termQuery("levelName.keyword", param.getLevelName()));
+            boolQueryBuilder.must(QueryBuilders.termQuery("levelName", param.getLevelName()));
         }
 
         if (StrUtil.isNotEmpty(param.getClassName())) {
-            boolQueryBuilder.must(QueryBuilders.termQuery("className.keyword", param.getClassName()));
+            boolQueryBuilder.must(QueryBuilders.termQuery("className", param.getClassName()));
         }
 
         if (StrUtil.isNotEmpty(param.getHospitalCode())) {
-            boolQueryBuilder.filter(QueryBuilders.termQuery("hospitalCode.keyword", param.getHospitalCode()));
+            boolQueryBuilder.filter(QueryBuilders.termQuery("hospitalCode", param.getHospitalCode()));
         }
 
         if (StrUtil.isNotEmpty(param.getProvince())) {
-            boolQueryBuilder.filter(QueryBuilders.matchQuery("province", param.getProvince()));
+            boolQueryBuilder.should(QueryBuilders.matchQuery("province", param.getProvince()));
         }
 
         if (StrUtil.isNotEmpty(param.getCity())) {
-            boolQueryBuilder.filter(QueryBuilders.matchQuery("city", param.getCity()));
+            boolQueryBuilder.should(QueryBuilders.matchQuery("city", param.getCity()));
         }
 
         final NativeSearchQuery query = new NativeSearchQuery(boolQueryBuilder);
-        query.setPageable(PageRequest.of(0, 10));
+        query.setPageable(PageRequest.of(param.getPageNum() - 1, param.getPageSize()));
         final SearchHits<HospitalESModel> hits = elasticsearchRestTemplate.search(query, HospitalESModel.class);
         return hits.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
     }

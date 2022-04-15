@@ -1,6 +1,6 @@
 package io.github.lostblackknight.hospital.service;
 
-import io.github.lostblackknight.model.dto.DeptDTO;
+import io.github.lostblackknight.model.dto.DeptESDTO;
 import io.github.lostblackknight.model.entity.hospital.Dept;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,5 +13,5 @@ import java.util.List;
 */
 public interface DeptService extends IService<Dept> {
 
-    List<DeptDTO> getDeptListByHospitalCode(String hospitalCode);
+    List<DeptESDTO> getDeptListByHospitalCode(String hospitalCode);
 }

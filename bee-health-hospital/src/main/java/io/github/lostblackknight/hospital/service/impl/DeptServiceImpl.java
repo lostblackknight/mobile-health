@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.github.lostblackknight.hospital.mapper.DeptMapper;
 import io.github.lostblackknight.hospital.service.DeptService;
-import io.github.lostblackknight.model.dto.DeptDTO;
+import io.github.lostblackknight.model.dto.DeptESDTO;
 import io.github.lostblackknight.model.entity.hospital.Dept;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept>
         implements DeptService {
 
     @Override
-    public List<DeptDTO> getDeptListByHospitalCode(String hospitalCode) {
+    public List<DeptESDTO> getDeptListByHospitalCode(String hospitalCode) {
         final List<Dept> deptList = baseMapper.selectList(new QueryWrapper<Dept>().eq("hospital_code", hospitalCode));
 
         final List<Dept> bigDeptList = baseMapper.selectList(new QueryWrapper<Dept>()
@@ -32,13 +32,13 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept>
 
         return bigDeptList.stream()
                 .map(bigDept -> {
-                    final DeptDTO dto = new DeptDTO();
+                    final DeptESDTO dto = new DeptESDTO();
                     dto.setId(bigDept.getClassCode());
-                    dto.setLabel(bigDept.getClassName());
-                    final List<DeptDTO> children = deptList.stream().filter(dept -> dept.getClassCode().equals(bigDept.getClassCode())).map(dept -> {
-                        final DeptDTO deptDTO = new DeptDTO();
+                    dto.setText(bigDept.getClassName());
+                    final List<DeptESDTO> children = deptList.stream().filter(dept -> dept.getClassCode().equals(bigDept.getClassCode())).map(dept -> {
+                        final DeptESDTO deptDTO = new DeptESDTO();
                         deptDTO.setId(dept.getDeptCode());
-                        deptDTO.setLabel(dept.getDeptName());
+                        deptDTO.setText(dept.getDeptName());
                         deptDTO.setChildren(null);
                         return deptDTO;
                     }).collect(Collectors.toList());

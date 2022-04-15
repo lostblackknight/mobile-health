@@ -8,8 +8,8 @@ import java.util.List;
  * @author chensixiang (chensixiang1234@gmail.com)
  */
 @Data
-public class DeptDTO {
+public class DeptESDTO {
     private String id;
-    private String label;
-    private List<DeptDTO> children;
+    private String text;
+    private List<DeptESDTO> children;
 }

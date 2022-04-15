@@ -64,6 +64,6 @@ public class DeptESModel {
     /**
      * 科室分类的名称
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Keyword)
     private String className;
 }

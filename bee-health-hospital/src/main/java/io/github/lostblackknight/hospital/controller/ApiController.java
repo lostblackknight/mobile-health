@@ -13,6 +13,7 @@ import io.github.lostblackknight.model.entity.hospital.Schedule;
 import io.github.lostblackknight.model.entity.search.DeptES;
 import io.github.lostblackknight.model.entity.search.HospitalES;
 import io.github.lostblackknight.model.entity.search.ScheduleES;
+import io.github.lostblackknight.model.entity.search.SuggestES;
 import io.github.lostblackknight.model.vo.CommonResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,6 +53,11 @@ public class ApiController {
                 hospitalES.setCity(result1.getData().getDictLabel());
             }
             searchClient.uploadHospitalToES(hospitalES);
+            // 上传建议
+            final SuggestES suggestES = new SuggestES();
+            suggestES.setId(hospital.getHospitalName());
+            suggestES.setSuggest(hospital.getHospitalName());
+            searchClient.uploadSuggestToES(suggestES);
         }
         return flag ? CommonResult.success("上传成功") : CommonResult.fail("上传失败");
     }
@@ -81,6 +87,11 @@ public class ApiController {
                     deptES.setCity(result1.getData().getDictLabel());
                 }
                 searchClient.uploadDeptToES(deptES);
+                // 上传建议
+                final SuggestES suggestES = new SuggestES();
+                suggestES.setId(dept.getDeptName());
+                suggestES.setSuggest(dept.getDeptName());
+                searchClient.uploadSuggestToES(suggestES);
             }
         }
         return flag ? CommonResult.success("上传成功") : CommonResult.fail("上传失败");
@@ -103,6 +114,11 @@ public class ApiController {
             final ScheduleES scheduleES = new ScheduleES();
             BeanUtil.copyProperties(schedule, scheduleES);
             searchClient.uploadSchedulesToES(scheduleES);
+            // 上传建议
+            final SuggestES suggestES = new SuggestES();
+            suggestES.setId(schedule.getDoctorName());
+            suggestES.setSuggest(schedule.getDoctorName());
+            searchClient.uploadSuggestToES(suggestES);
         }
         return flag ? CommonResult.success("上传成功") : CommonResult.fail("上传失败");
     }

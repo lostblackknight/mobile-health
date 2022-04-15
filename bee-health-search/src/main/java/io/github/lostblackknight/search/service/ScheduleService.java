@@ -1,7 +1,10 @@
 package io.github.lostblackknight.search.service;
 
-import io.github.lostblackknight.model.vo.HospitalSearchParam;
-import io.github.lostblackknight.search.entity.HospitalESModel;
+import io.github.lostblackknight.model.dto.DoctorDTO;
+import io.github.lostblackknight.model.dto.ScheduleDateDTO;
+import io.github.lostblackknight.model.vo.ScheduleDateParam;
+import io.github.lostblackknight.model.vo.ScheduleDoctorParam;
+import io.github.lostblackknight.model.vo.ScheduleParam;
 import io.github.lostblackknight.search.entity.ScheduleESModel;
 
 import java.util.List;
@@ -23,5 +26,9 @@ public interface ScheduleService {
 
     void removeHospital(String scheduleId);
 
-    List<ScheduleESModel> searchSchedule(HospitalSearchParam param);
+    List<ScheduleESModel> searchSchedule(ScheduleParam param);
+
+    List<ScheduleDateDTO> getScheduleDateList(ScheduleDateParam param);
+
+    List<DoctorDTO> getDoctorList(ScheduleDoctorParam param);
 }

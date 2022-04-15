@@ -13,4 +13,6 @@ public class HospitalSearchParam {
     private String city;
     private String levelName;
     private String className;
+    private Integer pageNum = 1;
+    private Integer pageSize = 10;
 }

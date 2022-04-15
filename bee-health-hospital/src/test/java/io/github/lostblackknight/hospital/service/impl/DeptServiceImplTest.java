@@ -3,14 +3,12 @@ package io.github.lostblackknight.hospital.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.lostblackknight.hospital.service.DeptService;
-import io.github.lostblackknight.model.dto.DeptDTO;
+import io.github.lostblackknight.model.dto.DeptESDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author chensixiang (chensixiang1234@gmail.com)
@@ -23,7 +21,7 @@ class DeptServiceImplTest {
 
     @Test
     void test19() throws JsonProcessingException {
-        final List<DeptDTO> list = deptService.getDeptListByHospitalCode("200026465");
+        final List<DeptESDTO> list = deptService.getDeptListByHospitalCode("200026465");
         System.out.println(new ObjectMapper().writeValueAsString(list));
     }
 }

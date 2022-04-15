@@ -51,7 +51,7 @@ public class ScheduleESModel {
     /**
      * 医生的名称
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Text, analyzer = "ik_smart", fielddata = true)
     private String doctorName;
 
     /**

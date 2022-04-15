@@ -50,6 +50,7 @@ public class JwtAuthorizationFilter implements GlobalFilter, Ordered {
             "/api/hospital/token/**",
             "/api/member/token/**",
             "/api/thirdpary/**",
+            "/api/search/**",
             "/api/member/sms/sendCode/**"
     );
 
