@@ -10,6 +10,8 @@ import java.util.List;
 @Data
 public class DoctorDTO {
     private String doctorName;
+    private String doctorCode;
+    private Long memberId;
     private String expert;
     private List<String> illNameList;
     private String icon;

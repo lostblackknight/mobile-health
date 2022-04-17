@@ -41,6 +41,10 @@ public class ScheduleES {
      */
     private String doctorName;
 
+    private String doctorCode;
+
+    private Long memberId;
+
     /**
      * 医生的专长
      */
@@ -64,7 +68,6 @@ public class ScheduleES {
     /**
      * 排班日期
      */
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date date;
 
     /**

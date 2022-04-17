@@ -5,7 +5,7 @@ spring:
   application:
     admin:
       enabled: true
-      jmx-name: org.springframework.boot:type=Admin,name=SpringApplication
+      jmx-name: org.springframework.boot:type=Admin,name=BeeHealthGatewayApplication
     name: bee-health-gateway
   cloud:
     nacos:

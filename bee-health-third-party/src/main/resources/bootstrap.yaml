@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: bee-health-third-party
+    admin:
+      enabled: true
+      jmx-name: org.springframework.boot:type=Admin,name=BeeHealthThirdPartyApplication
   servlet:
     multipart:
       max-request-size: 100MB

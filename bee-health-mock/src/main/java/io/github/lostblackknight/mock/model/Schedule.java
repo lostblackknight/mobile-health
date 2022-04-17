@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 
  * @TableName t_schedule
  */
 @Data
@@ -35,6 +34,10 @@ public class Schedule {
      * 科室的名称
      */
     private String deptName;
+
+    private String doctorCode;
+
+    private Long memberId;
 
     /**
      * 医生的名称

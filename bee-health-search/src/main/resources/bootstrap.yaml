@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: bee-health-search
+    admin:
+      enabled: true
+      jmx-name: org.springframework.boot:type=Admin,name=BeeHealthSearchApplication
   cloud:
     nacos:
       server-addr: 192.168.86.137:8848

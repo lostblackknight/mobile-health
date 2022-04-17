@@ -54,6 +54,12 @@ public class ScheduleESModel {
     @Field(type = FieldType.Text, analyzer = "ik_smart", fielddata = true)
     private String doctorName;
 
+    @Field(type = FieldType.Keyword)
+    private String doctorCode;
+
+    @Field(type = FieldType.Keyword)
+    private Long memberId;
+
     /**
      * 医生的专长
      */

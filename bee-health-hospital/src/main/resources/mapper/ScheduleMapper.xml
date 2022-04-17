@@ -11,6 +11,8 @@
             <result property="deptCode" column="dept_code" jdbcType="VARCHAR"/>
             <result property="deptName" column="dept_name" jdbcType="VARCHAR"/>
             <result property="doctorName" column="doctor_name" jdbcType="VARCHAR"/>
+            <result property="doctorCode" column="doctor_code" jdbcType="VARCHAR"/>
+            <result property="memberId" column="member_id" jdbcType="BIGINT"/>
             <result property="expert" column="expert" jdbcType="VARCHAR"/>
             <result property="illNameList" column="ill_name_list" jdbcType="VARCHAR"/>
             <result property="icon" column="icon" jdbcType="VARCHAR"/>

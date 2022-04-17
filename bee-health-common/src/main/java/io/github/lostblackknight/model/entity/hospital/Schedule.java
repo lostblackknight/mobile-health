@@ -3,6 +3,7 @@ package io.github.lostblackknight.model.entity.hospital;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -46,6 +47,10 @@ public class Schedule implements Serializable {
      * 医生的名称
      */
     private String doctorName;
+
+    private String doctorCode;
+
+    private Long memberId;
 
     /**
      * 医生的专长
