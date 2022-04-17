@@ -9,6 +9,7 @@ import io.github.lostblackknight.search.service.DeptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.TermQueryBuilder;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
@@ -74,6 +75,14 @@ public class DeptServiceImpl implements DeptService {
 
         if (StrUtil.isNotEmpty(param.getDeptName())) {
             boolQueryBuilder.must(QueryBuilders.matchQuery("deptName", param.getDeptName()));
+            if (param.getDeptName().equals("科室")) {
+                final MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
+                final NativeSearchQuery query = new NativeSearchQuery(matchAllQueryBuilder);
+                query.setPageable(PageRequest.of(param.getPageNum() - 1, param.getPageSize()));
+
+                final SearchHits<DeptESModel> searchHits = elasticsearchRestTemplate.search(query, DeptESModel.class);
+                return searchHits.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
+            }
         }
 
         if (StrUtil.isNotEmpty(param.getHospitalName())) {

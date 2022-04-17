@@ -8,6 +8,7 @@ import io.github.lostblackknight.search.service.HospitalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
@@ -73,6 +74,13 @@ public class HospitalServiceImpl implements HospitalService {
 
         if (StrUtil.isNotEmpty(param.getHospitalName())) {
             boolQueryBuilder.must(QueryBuilders.matchQuery("hospitalName", param.getHospitalName()));
+            if (param.getHospitalName().equals("医院")) {
+                final MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
+                final NativeSearchQuery query = new NativeSearchQuery(matchAllQueryBuilder);
+                query.setPageable(PageRequest.of(param.getPageNum() - 1, param.getPageSize()));
+                final SearchHits<HospitalESModel> hits = elasticsearchRestTemplate.search(query, HospitalESModel.class);
+                return hits.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
+            }
         }
 
         if (StrUtil.isNotEmpty(param.getLevelName())) {

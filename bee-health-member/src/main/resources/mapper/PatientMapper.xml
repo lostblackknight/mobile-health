@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.member.mapper.PatientMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.member.Patient">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="memberId" column="member_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="certificatesNo" column="certificates_no" jdbcType="VARCHAR"/>
+            <result property="sex" column="sex" jdbcType="VARCHAR"/>
+            <result property="birthDate" column="birth_date" jdbcType="DATE"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="contactsName" column="contacts_name" jdbcType="VARCHAR"/>
+            <result property="contactsCertificatesNo" column="contacts_certificates_no" jdbcType="VARCHAR"/>
+            <result property="contactsPhone" column="contacts_phone" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,member_id,name,
+        certificates_no,sex,birth_date,
+        phone,contacts_name,contacts_certificates_no,
+        contacts_phone,status,create_time,
+        update_time,is_deleted
+    </sql>
+</mapper>

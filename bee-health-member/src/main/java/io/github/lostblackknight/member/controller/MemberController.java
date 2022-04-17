@@ -20,7 +20,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/members/info")
-    public CommonResult<?> hello() {
+    public CommonResult<?> info() {
         final TokenInfoDTO dto = TokenInfoContextHolder.get();
         final Long memberId = dto.getUid();
         final Member member = memberService.getById(memberId);

@@ -1,6 +1,5 @@
 package io.github.lostblackknight.search.service.impl;
 
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import io.github.lostblackknight.model.dto.DoctorDTO;
@@ -9,7 +8,6 @@ import io.github.lostblackknight.model.vo.ScheduleDateParam;
 import io.github.lostblackknight.model.vo.ScheduleDeptParam;
 import io.github.lostblackknight.model.vo.ScheduleDoctorParam;
 import io.github.lostblackknight.model.vo.ScheduleParam;
-import io.github.lostblackknight.search.entity.DeptESModel;
 import io.github.lostblackknight.search.entity.ScheduleESModel;
 import io.github.lostblackknight.search.repository.ScheduleRepository;
 import io.github.lostblackknight.search.service.ScheduleService;
@@ -17,10 +15,9 @@ import io.github.lostblackknight.search.vo.DeptDoctorDTO;
 import io.github.lostblackknight.search.vo.DoctorScheduleDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Var;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
 import org.elasticsearch.search.aggregations.BucketOrder;
@@ -39,7 +36,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -170,6 +166,13 @@ public class ScheduleServiceImpl implements ScheduleService {
     public List<DoctorDTO> getDoctorList(ScheduleDoctorParam param) {
         final BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
 
+        if (StrUtil.isNotEmpty(param.getDoctorName())) {
+            boolQueryBuilder.must(QueryBuilders.matchQuery("doctorName", param.getDoctorName()));
+            if (param.getDoctorName().equals("医生")) {
+                return getDoctorListMathAll(param);
+            }
+        }
+
         if (StrUtil.isNotEmpty(param.getDeptCode())) {
             boolQueryBuilder.filter(QueryBuilders.termQuery("deptCode", param.getDeptCode()));
         }
@@ -182,7 +185,11 @@ public class ScheduleServiceImpl implements ScheduleService {
             boolQueryBuilder.filter(QueryBuilders.termQuery("date", param.getDate()));
         }
 
-        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName.keyword");
+        if (StrUtil.isNotEmpty(param.getCity())) {
+            boolQueryBuilder.should(QueryBuilders.matchQuery("city", param.getCity()));
+        }
+
+        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName.keyword").size(999);
 
         doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert.keyword"));
         doctorNameAgg.subAggregation(AggregationBuilders.terms("illNameList_agg").field("illNameList.keyword"));
@@ -201,7 +208,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         query.addAggregation(doctorNameAgg);
 
-        query.setPageable(PageRequest.of(param.getPageNum() - 1, param.getPageSize()));
+        query.setPageable(PageRequest.of(0, 10000));
 
         final SearchHits<ScheduleESModel> searchHits = elasticsearchRestTemplate.search(query, ScheduleESModel.class);
 
@@ -236,7 +243,91 @@ public class ScheduleServiceImpl implements ScheduleService {
             return dto;
         }).collect(Collectors.toList());
 
-        return collect;
+        int from = (param.getPageNum() - 1) * param.getPageSize();
+        int to = (param.getPageNum() - 1) * param.getPageSize()+ param.getPageSize();
+
+        if (from >= collect.size()) {
+            return new ArrayList<>();
+        }
+
+        if (to >= collect.size()) {
+            return collect.subList(from, collect.size());
+        }
+
+        return collect.subList(from, to);
+    }
+
+    private List<DoctorDTO> getDoctorListMathAll(ScheduleDoctorParam param) {
+
+        final MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
+
+        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName.keyword").size(999);
+
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("illNameList_agg").field("illNameList.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("icon_agg").field("icon.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("doctorCode_agg").field("doctorCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("memberId_agg").field("memberId"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("levelName_agg").field("levelName.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalName_agg").field("hospitalName.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalCode_agg").field("hospitalCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptCode_agg").field("deptCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.max("status_agg").field("yuYueState"));
+
+
+        final NativeSearchQuery query = new NativeSearchQuery(matchAllQueryBuilder);
+
+        query.addAggregation(doctorNameAgg);
+
+        query.setPageable(PageRequest.of(0, 10000));
+
+        final SearchHits<ScheduleESModel> searchHits = elasticsearchRestTemplate.search(query, ScheduleESModel.class);
+
+        final Aggregations aggregations = searchHits.getAggregations();
+
+        final ParsedStringTerms doctorName_agg = aggregations.get("doctorName_agg");
+        final List<DoctorDTO> collect = doctorName_agg.getBuckets().stream().map(bucket -> {
+            final DoctorDTO dto = new DoctorDTO();
+            dto.setDoctorName((String) bucket.getKey());
+            final ParsedStringTerms icon_agg = bucket.getAggregations().get("icon_agg");
+            dto.setIcon((String) icon_agg.getBuckets().get(0).getKey());
+            final ParsedStringTerms expert_agg = bucket.getAggregations().get("expert_agg");
+            dto.setExpert((String) expert_agg.getBuckets().get(0).getKey());
+            final ParsedStringTerms deptName_agg = bucket.getAggregations().get("deptName_agg");
+            dto.setDeptName((String) deptName_agg.getBuckets().get(0).getKey());
+            final ParsedStringTerms hospitalName = bucket.getAggregations().get("hospitalName_agg");
+            dto.setHospitalName((String) hospitalName.getBuckets().get(0).getKey());
+            final ParsedStringTerms illNameList_agg = bucket.getAggregations().get("illNameList_agg");
+            dto.setIllNameList(List.of(((String) illNameList_agg.getBuckets().get(0).getKey()).split(",")));
+            final ParsedStringTerms levelName_agg = bucket.getAggregations().get("levelName_agg");
+            dto.setLevelName((String) levelName_agg.getBuckets().get(0).getKey());
+            final ParsedStringTerms doctorCode_agg = bucket.getAggregations().get("doctorCode_agg");
+            dto.setDoctorCode((String) doctorCode_agg.getBuckets().get(0).getKey());
+            final ParsedLongTerms memberId_agg = bucket.getAggregations().get("memberId_agg");
+            dto.setMemberId((Long) memberId_agg.getBuckets().get(0).getKey());
+            final ParsedStringTerms deptCode_agg = bucket.getAggregations().get("deptCode_agg");
+            dto.setDeptCode((String) deptCode_agg.getBuckets().get(0).getKey());
+            final ParsedStringTerms hospitalCode_agg = bucket.getAggregations().get("hospitalCode_agg");
+            dto.setHospitalCode((String) hospitalCode_agg.getBuckets().get(0).getKey());
+            final ParsedMax status_agg = bucket.getAggregations().get("status_agg");
+            dto.setStatus((int) status_agg.getValue());
+            return dto;
+        }).collect(Collectors.toList());
+
+        int from = (param.getPageNum() - 1) * param.getPageSize();
+        int to = (param.getPageNum() - 1) * param.getPageSize()+ param.getPageSize();
+
+        if (from >= collect.size()) {
+            return new ArrayList<>();
+        }
+
+        if (to >= collect.size()) {
+            return collect.subList(from, collect.size());
+        }
+
+        return collect.subList(from, to);
+
     }
 
     @Override
