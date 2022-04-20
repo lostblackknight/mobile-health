@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.order.mapper.OrderInfoMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.order.OrderInfo">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="memberId" column="member_id" jdbcType="BIGINT"/>
+            <result property="orderSn" column="order_sn" jdbcType="VARCHAR"/>
+            <result property="hospitalCode" column="hospital_code" jdbcType="VARCHAR"/>
+            <result property="hospitalName" column="hospital_name" jdbcType="VARCHAR"/>
+            <result property="deptCode" column="dept_code" jdbcType="VARCHAR"/>
+            <result property="deptName" column="dept_name" jdbcType="VARCHAR"/>
+            <result property="doctorMemberId" column="doctor_member_id" jdbcType="BIGINT"/>
+            <result property="doctorCode" column="doctor_code" jdbcType="VARCHAR"/>
+            <result property="doctorName" column="doctor_name" jdbcType="VARCHAR"/>
+            <result property="levelName" column="level_name" jdbcType="VARCHAR"/>
+            <result property="recordId" column="record_id" jdbcType="VARCHAR"/>
+            <result property="number" column="number" jdbcType="INTEGER"/>
+            <result property="scheduleId" column="schedule_id" jdbcType="VARCHAR"/>
+            <result property="reserveDate" column="reserve_date" jdbcType="DATE"/>
+            <result property="reserveTime" column="reserve_time" jdbcType="TINYINT"/>
+            <result property="patientId" column="patient_id" jdbcType="BIGINT"/>
+            <result property="patientName" column="patient_name" jdbcType="VARCHAR"/>
+            <result property="patientPhone" column="patient_phone" jdbcType="VARCHAR"/>
+            <result property="amount" column="amount" jdbcType="DECIMAL"/>
+            <result property="quitTime" column="quit_time" jdbcType="TIMESTAMP"/>
+            <result property="orderStatus" column="order_status" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,member_id,order_sn,
+        hospital_code,hospital_name,dept_code,
+        dept_name,doctor_member_id,doctor_code,
+        doctor_name,level_name,record_id,
+        schedule_id,reserve_date,reserve_time,
+        patient_id,patient_name,patient_phone,
+        amount,quit_time,order_status,
+        create_time,update_time,is_deleted
+    </sql>
+</mapper>

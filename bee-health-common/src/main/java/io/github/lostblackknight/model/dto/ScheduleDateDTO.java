@@ -10,8 +10,7 @@ import java.util.Date;
  */
 @Data
 public class ScheduleDateDTO {
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date date;
+    private String date;
     private String week;
     // 是否可预约
     private Integer status;

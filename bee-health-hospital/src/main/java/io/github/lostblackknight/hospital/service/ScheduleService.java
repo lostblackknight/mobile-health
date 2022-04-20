@@ -24,7 +24,7 @@ public interface ScheduleService extends IService<Schedule> {
      * @param date
      * @return
      */
-    boolean youHaoByDate(String hospitalCode, String deptCode, Date date);
+    boolean youHaoByDate(String hospitalCode, String deptCode, String date);
 
     List<Schedule> getDoctorListByScheduleDate(String hospitalCode, String deptCode, Date date);
 }

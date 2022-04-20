@@ -1,5 +1,6 @@
 package io.github.lostblackknight.mock.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -67,7 +68,8 @@ public class Schedule {
     /**
      * 排班日期
      */
-    private Date date;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private String date;
 
     /**
      * 排班星期

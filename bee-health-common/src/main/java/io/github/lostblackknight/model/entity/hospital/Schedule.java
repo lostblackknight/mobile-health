@@ -11,10 +11,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 
  * @TableName t_schedule
  */
-@TableName(value ="t_schedule")
+@TableName(value = "t_schedule")
 @Data
 public class Schedule implements Serializable {
     /**
@@ -75,7 +74,7 @@ public class Schedule implements Serializable {
     /**
      * 排班日期
      */
-    private Date date;
+    private String date;
 
     /**
      * 排班星期

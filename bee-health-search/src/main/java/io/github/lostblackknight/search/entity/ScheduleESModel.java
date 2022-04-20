@@ -33,7 +33,7 @@ public class ScheduleESModel {
     /**
      * 医院的名称
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Keyword)
     private String hospitalName;
 
     /**
@@ -45,51 +45,50 @@ public class ScheduleESModel {
     /**
      * 科室的名称
      */
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Keyword)
     private String deptName;
 
     /**
      * 医生的名称
      */
-    @Field(type = FieldType.Text, analyzer = "ik_smart", fielddata = true)
+    @Field(type = FieldType.Keyword)
     private String doctorName;
 
     @Field(type = FieldType.Keyword)
     private String doctorCode;
 
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Integer)
     private Long memberId;
 
     /**
      * 医生的专长
      */
-    @Field(type = FieldType.Keyword, index = false, docValues = false)
+    @Field(type = FieldType.Keyword)
     private String expert;
 
     /**
      * 专治的病情
      */
-    @Field(type = FieldType.Keyword, index = false, docValues = false)
+    @Field(type = FieldType.Keyword)
     private String illNameList;
 
     /**
      * 医生的头像
      */
-    @Field(type = FieldType.Keyword, index = false, docValues = false)
+    @Field(type = FieldType.Keyword)
     private String icon;
 
     /**
      * 医生的职称
      */
-    @Field(type = FieldType.Keyword, index = false, docValues = false)
+    @Field(type = FieldType.Keyword)
     private String levelName;
 
     /**
      * 排班日期
      */
-    @Field( type = FieldType.Date, format = DateFormat.custom, pattern = "yyyy-MM-dd")
-    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd",timezone="GMT+8")
-    private Date date;
+    @Field(type = FieldType.Keyword)
+    private String date;
 
     /**
      * 排班星期

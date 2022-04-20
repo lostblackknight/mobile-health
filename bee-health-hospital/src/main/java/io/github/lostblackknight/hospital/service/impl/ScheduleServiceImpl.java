@@ -68,7 +68,7 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule>
     }
 
     @Override
-    public boolean youHaoByDate(String hospitalCode, String deptCode, Date date) {
+    public boolean youHaoByDate(String hospitalCode, String deptCode, String date) {
         final List<Schedule> schedules = baseMapper.selectList(new QueryWrapper<Schedule>()
                 .eq("hospital_code", hospitalCode)
                 .eq("dept_code", deptCode)

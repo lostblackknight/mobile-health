@@ -1,5 +1,7 @@
 package io.github.lostblackknight.search.service.impl;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import io.github.lostblackknight.model.dto.DoctorDTO;
@@ -15,6 +17,7 @@ import io.github.lostblackknight.search.vo.DeptDoctorDTO;
 import io.github.lostblackknight.search.vo.DoctorScheduleDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.client.utils.DateUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -35,6 +38,8 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -103,11 +108,11 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
 
         if (StrUtil.isNotEmpty(param.getDate())) {
-            boolQueryBuilder.filter(QueryBuilders.matchQuery("date", param.getDate()));
+            boolQueryBuilder.filter(QueryBuilders.termQuery("date", param.getDate()));
         }
 
         if (StrUtil.isNotEmpty(param.getScheduleId())) {
-            boolQueryBuilder.filter(QueryBuilders.matchQuery("scheduleId", param.getScheduleId()));
+            boolQueryBuilder.filter(QueryBuilders.termQuery("scheduleId", param.getScheduleId()));
         }
 
         final NativeSearchQuery query = new NativeSearchQuery(boolQueryBuilder);
@@ -134,7 +139,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         final TermsAggregationBuilder dateAgg = AggregationBuilders.terms("date_agg").field("date").order(BucketOrder.key(true));
 
-        dateAgg.subAggregation(AggregationBuilders.terms("week_agg").field("week.keyword"));
+        dateAgg.subAggregation(AggregationBuilders.terms("week_agg").field("week"));
         dateAgg.subAggregation(AggregationBuilders.max("state_agg").field("yuYueState"));
 
         final NativeSearchQuery query = new NativeSearchQuery(boolQueryBuilder);
@@ -147,11 +152,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         final SearchHits<ScheduleESModel> searchHits = elasticsearchRestTemplate.search(query, ScheduleESModel.class);
 
-        final ParsedLongTerms date_agg = searchHits.getAggregations().get("date_agg");
+        final ParsedStringTerms date_agg = searchHits.getAggregations().get("date_agg");
 
         final List<ScheduleDateDTO> dtoList = date_agg.getBuckets().stream().map(bucket -> {
             final ScheduleDateDTO dto = new ScheduleDateDTO();
-            dto.setDate(new Date((Long) bucket.getKey()));
+            dto.setDate((String) bucket.getKey());
             final ParsedStringTerms week_agg = bucket.getAggregations().get("week_agg");
             dto.setWeek((String) week_agg.getBuckets().get(0).getKey());
             final ParsedMax state_agg = bucket.getAggregations().get("state_agg");
@@ -189,18 +194,18 @@ public class ScheduleServiceImpl implements ScheduleService {
             boolQueryBuilder.should(QueryBuilders.matchQuery("city", param.getCity()));
         }
 
-        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName.keyword").size(999);
+        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName").size(999);
 
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("illNameList_agg").field("illNameList.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("icon_agg").field("icon.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("doctorCode_agg").field("doctorCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("illNameList_agg").field("illNameList"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("icon_agg").field("icon"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("doctorCode_agg").field("doctorCode"));
         doctorNameAgg.subAggregation(AggregationBuilders.terms("memberId_agg").field("memberId"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("levelName_agg").field("levelName.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalName_agg").field("hospitalName.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalCode_agg").field("hospitalCode.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptCode_agg").field("deptCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("levelName_agg").field("levelName"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalName_agg").field("hospitalName"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalCode_agg").field("hospitalCode"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptCode_agg").field("deptCode"));
         doctorNameAgg.subAggregation(AggregationBuilders.max("status_agg").field("yuYueState"));
 
 
@@ -261,18 +266,18 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         final MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
 
-        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName.keyword").size(999);
+        final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName").size(999);
 
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("illNameList_agg").field("illNameList.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("icon_agg").field("icon.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("doctorCode_agg").field("doctorCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("illNameList_agg").field("illNameList"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("icon_agg").field("icon"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("doctorCode_agg").field("doctorCode"));
         doctorNameAgg.subAggregation(AggregationBuilders.terms("memberId_agg").field("memberId"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("levelName_agg").field("levelName.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalName_agg").field("hospitalName.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalCode_agg").field("hospitalCode.keyword"));
-        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptCode_agg").field("deptCode.keyword"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("levelName_agg").field("levelName"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalName_agg").field("hospitalName"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("hospitalCode_agg").field("hospitalCode"));
+        doctorNameAgg.subAggregation(AggregationBuilders.terms("deptCode_agg").field("deptCode"));
         doctorNameAgg.subAggregation(AggregationBuilders.max("status_agg").field("yuYueState"));
 
 
@@ -386,9 +391,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
 
         final TermsAggregationBuilder dateAgg = AggregationBuilders.terms("date_agg").field("date").size(100).order(BucketOrder.key(true));
-        final TermsAggregationBuilder weekAgg = AggregationBuilders.terms("week_agg").field("week.keyword").size(100);
+        final TermsAggregationBuilder weekAgg = AggregationBuilders.terms("week_agg").field("week").size(100);
 
-        final TermsAggregationBuilder timeTypeAgg = AggregationBuilders.terms("timeType_agg").field("timeType.keyword").size(100);
+        final TermsAggregationBuilder timeTypeAgg = AggregationBuilders.terms("timeType_agg").field("timeType").size(100);
 
         dateAgg.subAggregation(weekAgg);
         dateAgg.subAggregation(timeTypeAgg);
@@ -397,7 +402,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         timeTypeAgg.subAggregation(AggregationBuilders.terms("yuYueState_agg").field("yuYueState").size(100));
         timeTypeAgg.subAggregation(AggregationBuilders.terms("yuYueMax_agg").field("yuYueMax").size(100));
         timeTypeAgg.subAggregation(AggregationBuilders.terms("yuYueNum_agg").field("yuYueNum").size(100));
-        timeTypeAgg.subAggregation(AggregationBuilders.terms("scheduleId_agg").field("scheduleId.keyword").size(100));
+        timeTypeAgg.subAggregation(AggregationBuilders.terms("scheduleId_agg").field("scheduleId").size(100));
 
         final NativeSearchQuery query = new NativeSearchQuery(boolQueryBuilder);
 
@@ -412,7 +417,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         final Aggregations aggregations = searchHits.getAggregations();
 
-        final ParsedLongTerms date_agg = aggregations.get("date_agg");
+        final ParsedStringTerms date_agg = aggregations.get("date_agg");
 
         final DoctorScheduleDTO dto = new DoctorScheduleDTO();
         dto.setHospitalCode(model.getHospitalCode());
@@ -429,7 +434,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         final ArrayList<DoctorScheduleDTO.Schedule> schedules = new ArrayList<>();
 
         date_agg.getBuckets().forEach(bucket -> {
-            final Date date = new Date((Long) bucket.getKey());
+            final Date date = DateUtil.parse((CharSequence) bucket.getKey(), "yyyy-MM-dd").toJdkDate();
             final DoctorScheduleDTO.Schedule schedule = new DoctorScheduleDTO.Schedule();
             schedule.setDate(date);
             schedule.setDay(String.valueOf(date.getDate() < 10 ? "0" + date.getDate() : date.getDate()));
@@ -451,8 +456,8 @@ public class ScheduleServiceImpl implements ScheduleService {
                     final ParsedStringTerms scheduleId_agg = timeType_agg.getBuckets().get(0).getAggregations().get("scheduleId_agg");
                     am.setScheduleId((String) scheduleId_agg.getBuckets().get(0).getKey());
                     am.setTimeType((String) timeType_agg.getBuckets().get(0).getKey());
-                    final ParsedDoubleTerms amount_agg = timeType_agg.getBuckets().get(0).getAggregations().get("amount_agg");
-                    am.setAmount(BigDecimal.valueOf((Double) amount_agg.getBuckets().get(0).getKey()));
+                    final ParsedStringTerms amount_agg = timeType_agg.getBuckets().get(0).getAggregations().get("amount_agg");
+                    am.setAmount(new BigDecimal((String) amount_agg.getBuckets().get(0).getKey()));
                     final ParsedLongTerms yuYueState_agg = timeType_agg.getBuckets().get(0).getAggregations().get("yuYueState_agg");
                     am.setYuYueState(Math.toIntExact((Long) yuYueState_agg.getBuckets().get(0).getKey()));
                     final ParsedLongTerms yuYueMax_agg = timeType_agg.getBuckets().get(0).getAggregations().get("yuYueMax_agg");
@@ -466,8 +471,8 @@ public class ScheduleServiceImpl implements ScheduleService {
                     final ParsedStringTerms scheduleId_agg1 = timeType_agg.getBuckets().get(0).getAggregations().get("scheduleId_agg");
                     pm.setScheduleId((String) scheduleId_agg1.getBuckets().get(0).getKey());
                     pm.setTimeType((String) timeType_agg.getBuckets().get(0).getKey());
-                    final ParsedDoubleTerms amount_agg1 = timeType_agg.getBuckets().get(0).getAggregations().get("amount_agg");
-                    pm.setAmount(BigDecimal.valueOf((Double) amount_agg1.getBuckets().get(0).getKey()));
+                    final ParsedStringTerms amount_agg1 = timeType_agg.getBuckets().get(0).getAggregations().get("amount_agg");
+                    pm.setAmount(new BigDecimal((String) amount_agg1.getBuckets().get(0).getKey()));
                     final ParsedLongTerms yuYueState_agg1 = timeType_agg.getBuckets().get(0).getAggregations().get("yuYueState_agg");
                     pm.setYuYueState(Math.toIntExact((Long) yuYueState_agg1.getBuckets().get(0).getKey()));
                     final ParsedLongTerms yuYueMax_agg1 = timeType_agg.getBuckets().get(0).getAggregations().get("yuYueMax_agg");
@@ -484,8 +489,8 @@ public class ScheduleServiceImpl implements ScheduleService {
                 final ParsedStringTerms scheduleId_agg = timeType_agg.getBuckets().get(0).getAggregations().get("scheduleId_agg");
                 am.setScheduleId((String) scheduleId_agg.getBuckets().get(0).getKey());
                 am.setTimeType((String) timeType_agg.getBuckets().get(0).getKey());
-                final ParsedDoubleTerms amount_agg = timeType_agg.getBuckets().get(0).getAggregations().get("amount_agg");
-                am.setAmount(BigDecimal.valueOf((Double) amount_agg.getBuckets().get(0).getKey()));
+                final ParsedStringTerms amount_agg = timeType_agg.getBuckets().get(0).getAggregations().get("amount_agg");
+                am.setAmount(new BigDecimal((String) amount_agg.getBuckets().get(0).getKey()));
                 final ParsedLongTerms yuYueState_agg = timeType_agg.getBuckets().get(0).getAggregations().get("yuYueState_agg");
                 am.setYuYueState(Math.toIntExact((Long) yuYueState_agg.getBuckets().get(0).getKey()));
                 final ParsedLongTerms yuYueMax_agg = timeType_agg.getBuckets().get(0).getAggregations().get("yuYueMax_agg");
@@ -500,8 +505,8 @@ public class ScheduleServiceImpl implements ScheduleService {
                 final ParsedStringTerms scheduleId_agg1 = timeType_agg.getBuckets().get(1).getAggregations().get("scheduleId_agg");
                 pm.setScheduleId((String) scheduleId_agg1.getBuckets().get(0).getKey());
                 pm.setTimeType((String) timeType_agg.getBuckets().get(1).getKey());
-                final ParsedDoubleTerms amount_agg1 = timeType_agg.getBuckets().get(1).getAggregations().get("amount_agg");
-                pm.setAmount(BigDecimal.valueOf((Double) amount_agg1.getBuckets().get(0).getKey()));
+                final ParsedStringTerms amount_agg1 = timeType_agg.getBuckets().get(1).getAggregations().get("amount_agg");
+                pm.setAmount(new BigDecimal((String) amount_agg1.getBuckets().get(0).getKey()));
                 final ParsedLongTerms yuYueState_agg1 = timeType_agg.getBuckets().get(1).getAggregations().get("yuYueState_agg");
                 pm.setYuYueState(Math.toIntExact((Long) yuYueState_agg1.getBuckets().get(0).getKey()));
                 final ParsedLongTerms yuYueMax_agg1 = timeType_agg.getBuckets().get(1).getAggregations().get("yuYueMax_agg");

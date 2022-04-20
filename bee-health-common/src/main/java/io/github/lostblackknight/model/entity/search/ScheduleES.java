@@ -68,7 +68,7 @@ public class ScheduleES {
     /**
      * 排班日期
      */
-    private Date date;
+    private String date;
 
     /**
      * 排班星期

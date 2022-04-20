@@ -1,11 +1,11 @@
-package io.github.lostblackknight.hospital.filter;
+package io.github.lostblackknight.order.filter;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.lostblackknight.hospital.support.TokenInfoContextHolder;
 import io.github.lostblackknight.model.dto.TokenInfoDTO;
+import io.github.lostblackknight.order.support.TokenInfoContextHolder;
 import org.springframework.core.log.LogMessage;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -36,14 +36,13 @@ public class TokenInfoFilter extends OncePerRequestFilter {
      * 不需要授权的请求
      */
     private static final List<AntPathRequestMatcher> ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
-            new AntPathRequestMatcher("/token/**")
+            new AntPathRequestMatcher("/payment/notify")
     ));
 
     /**
      * feign远程调用的请求
      */
     private static final List<AntPathRequestMatcher> INTERNAL_SERVER_ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
-            new AntPathRequestMatcher("/schedules/**")
     ));
 
     @Override
@@ -80,10 +79,6 @@ public class TokenInfoFilter extends OncePerRequestFilter {
         final ObjectMapper mapper = new ObjectMapper();
         final TokenInfoDTO tokenInfoDTO = mapper.readValue(tokenInfo, TokenInfoDTO.class);
         final List<String> roles = tokenInfoDTO.getRoles();
-        if (isInternalServerRequest(request)) {
-            this.logger.info("Feign 远程调用 添加内部服务角色...");
-            roles.add("service");
-        }
         // 设置 token 信息
         this.logger.info("添加 token 上下文。");
         TokenInfoContextHolder.set(tokenInfoDTO);
