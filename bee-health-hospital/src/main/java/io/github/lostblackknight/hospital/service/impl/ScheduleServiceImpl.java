@@ -12,7 +12,6 @@ import io.github.lostblackknight.util.PageUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,7 +80,7 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule>
     }
 
     @Override
-    public List<Schedule> getDoctorListByScheduleDate(String hospitalCode, String deptCode, Date date) {
+    public List<Schedule> getDoctorListByScheduleDate(String hospitalCode, String deptCode, String date) {
         return baseMapper.selectList(new QueryWrapper<Schedule>()
                 .eq("hospital_code", hospitalCode)
                 .eq("dept_code", deptCode)

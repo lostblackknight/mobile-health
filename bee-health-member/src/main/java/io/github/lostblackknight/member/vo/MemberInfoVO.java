@@ -14,4 +14,5 @@ public class MemberInfoVO {
     private String nickName;
     private String avatar;
     private Integer status;
+    private Long uid;
 }

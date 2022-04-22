@@ -5,7 +5,6 @@ import io.github.lostblackknight.model.dto.ScheduleDateDTO;
 import io.github.lostblackknight.model.entity.hospital.Schedule;
 import com.baomidou.mybatisplus.extension.service.IService;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,5 +25,5 @@ public interface ScheduleService extends IService<Schedule> {
      */
     boolean youHaoByDate(String hospitalCode, String deptCode, String date);
 
-    List<Schedule> getDoctorListByScheduleDate(String hospitalCode, String deptCode, Date date);
+    List<Schedule> getDoctorListByScheduleDate(String hospitalCode, String deptCode, String date);
 }

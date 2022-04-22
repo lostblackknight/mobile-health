@@ -1,10 +1,10 @@
-package io.github.lostblackknight.admin.filter;
+package io.github.lostblackknight.message.filter;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.lostblackknight.admin.support.TokenInfoContextHolder;
+import io.github.lostblackknight.message.support.TokenInfoContextHolder;
 import io.github.lostblackknight.model.dto.TokenInfoDTO;
 import org.springframework.core.log.LogMessage;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,16 +36,13 @@ public class TokenInfoFilter extends OncePerRequestFilter {
      * 不需要授权的请求
      */
     private static final List<AntPathRequestMatcher> ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
-            new AntPathRequestMatcher("/token/**")
+            new AntPathRequestMatcher("/ws/**")
     ));
 
     /**
      * feign远程调用的请求
      */
     private static final List<AntPathRequestMatcher> INTERNAL_SERVER_ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
-            new AntPathRequestMatcher("/roles/tag/**"),
-            new AntPathRequestMatcher("/roles/batch/**"),
-            new AntPathRequestMatcher("/dict/**")
     ));
 
     @Override
@@ -55,6 +51,7 @@ public class TokenInfoFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
             return;
         }
+        logger.info("开始授权");
         Authentication authenticationResult = attemptAuthorization(request);
         if (authenticationResult == null) {
             chain.doFilter(request, response);
@@ -83,10 +80,6 @@ public class TokenInfoFilter extends OncePerRequestFilter {
         final TokenInfoDTO tokenInfoDTO = mapper.readValue(tokenInfo, TokenInfoDTO.class);
         final List<String> roles = tokenInfoDTO.getRoles();
         // 设置 token 信息
-        if (isInternalServerRequest(request)) {
-            this.logger.info("Feign 远程调用 添加内部服务角色...");
-            roles.add("service");
-        }
         this.logger.info("添加 token 上下文。");
         TokenInfoContextHolder.set(tokenInfoDTO);
         if (CollUtil.isNotEmpty(roles)) {

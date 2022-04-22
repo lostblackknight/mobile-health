@@ -39,9 +39,7 @@ public class ScheduleController {
     public CommonResult<?> getDoctorListByScheduleDate(@RequestParam String date,
                                                        @PathVariable String deptCode,
                                                        @PathVariable String hospitalCode) {
-        final DateTime dateTime = DateUtil.parse(date, "yyyy-MM-dd");
-        final Date jdkDate = dateTime.toJdkDate();
-        List<Schedule> schedules = scheduleService.getDoctorListByScheduleDate(hospitalCode, deptCode, jdkDate);
+        List<Schedule> schedules = scheduleService.getDoctorListByScheduleDate(hospitalCode, deptCode, date);
         return CommonResult.success(schedules);
     }
 

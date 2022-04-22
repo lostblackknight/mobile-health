@@ -52,7 +52,8 @@ public class JwtAuthorizationFilter implements GlobalFilter, Ordered {
             "/api/thirdpary/**",
             "/api/search/**",
             "/api/member/sms/sendCode/**",
-            "/api/order/payment/notify"
+            "/api/order/payment/notify",
+            "/api/message/ws/**"
     );
 
     private final JwtProperties jwtProperties;

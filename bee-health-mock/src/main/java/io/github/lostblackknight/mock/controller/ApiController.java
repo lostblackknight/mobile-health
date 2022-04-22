@@ -90,7 +90,9 @@ public class ApiController {
         String result = "";
 
         for (Schedule schedule : schedules) {
-            schedule.setMemberId(0L);
+            if(schedule.getMemberId() == null) {
+                schedule.setMemberId(0L);
+            }
             result = HttpUtil.createPost(BeeHealthTemplate.HOSPITAL_API + "/schedules/upload")
                     .auth(BeeHealthTemplate.AUTH_PREFIX + token)
                     .body(new ObjectMapper().writeValueAsString(schedule))

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.message.mapper.MessageMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.message.entity.Message">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="fromId" column="from_id" jdbcType="BIGINT"/>
+            <result property="toId" column="to_id" jdbcType="BIGINT"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="INTEGER"/>
+            <result property="sendTime" column="send_time" jdbcType="TIMESTAMP"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,from_id,to_id,
+        content,type,send_time,
+        status
+    </sql>
+</mapper>

@@ -57,7 +57,7 @@ public class ScheduleESModel {
     @Field(type = FieldType.Keyword)
     private String doctorCode;
 
-    @Field(type = FieldType.Integer)
+    @Field(type = FieldType.Long)
     private Long memberId;
 
     /**

@@ -44,6 +44,7 @@ public class TokenInfoFilter extends OncePerRequestFilter {
      * feign远程调用的请求
      */
     private static final List<AntPathRequestMatcher> INTERNAL_SERVER_ANT_PATH_REQUEST_MATCHERS = new ArrayList<>(List.of(
+            new AntPathRequestMatcher("/members/**")
     ));
 
     @Override
@@ -80,6 +81,10 @@ public class TokenInfoFilter extends OncePerRequestFilter {
         final TokenInfoDTO tokenInfoDTO = mapper.readValue(tokenInfo, TokenInfoDTO.class);
         final List<String> roles = tokenInfoDTO.getRoles();
         // 设置 token 信息
+        if (isInternalServerRequest(request)) {
+            this.logger.info("Feign 远程调用 添加内部服务角色...");
+            roles.add("service");
+        }
         this.logger.info("添加 token 上下文。");
         TokenInfoContextHolder.set(tokenInfoDTO);
         if (CollUtil.isNotEmpty(roles)) {

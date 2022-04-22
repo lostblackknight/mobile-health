@@ -8,6 +8,7 @@ import io.github.lostblackknight.model.entity.member.Member;
 import io.github.lostblackknight.model.vo.CommonResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,6 +31,13 @@ public class MemberController {
         memberInfoVO.setNickName(member.getNickName());
         memberInfoVO.setAvatar(member.getAvatar());
         memberInfoVO.setStatus(member.getStatus());
+        memberInfoVO.setUid(memberId);
         return CommonResult.success(memberInfoVO);
+    }
+
+    @GetMapping("/members/{id}")
+    public CommonResult<?> getMemberById(@PathVariable Long id) {
+        final Member member = memberService.getMemberById(id);
+        return CommonResult.success(member);
     }
 }

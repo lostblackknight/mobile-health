@@ -9,12 +9,12 @@ spring:
       jmx-name: org.springframework.boot:type=Admin,name=BeeHealthSearchApplication
   cloud:
     nacos:
-      server-addr: 192.168.86.137:8848
+      server-addr: 192.168.86.128:8848
       config:
         file-extension: yaml
   elasticsearch:
     rest:
-      uris: http://192.168.86.137:9200
+      uris: http://192.168.86.128:9200
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
