@@ -34,11 +34,26 @@ public class OrderInfoController {
         return CommonResult.success(orderInfo);
     }
 
+    @GetMapping("/orders/{memberId}/{orderSn}")
+    public CommonResult<?> getOrderDetailByOrderSnAndMemberId(@PathVariable String orderSn, @PathVariable Long memberId) {
+        final OrderInfo orderInfo = orderInfoService.getOne(new QueryWrapper<OrderInfo>().eq("member_id", memberId)
+                .eq("order_sn", orderSn));
+        return CommonResult.success(orderInfo);
+    }
+
+    @GetMapping("/orders/check/booking/{scheduleId}")
+    public CommonResult<?> checkBooking(@PathVariable String scheduleId) {
+
+        final boolean flag = orderInfoService.checkBooking(scheduleId);
+
+        return flag ? CommonResult.success("") :CommonResult.fail("当前时间不可预约");
+    }
+
 
     @PostMapping("/orders/{scheduleId}/{patientId}")
     public CommonResult<?> createOrder(@PathVariable String scheduleId, @PathVariable Long patientId) {
         String orderSn = orderInfoService.createOrder(scheduleId, patientId);
-        return orderSn != null ? CommonResult.success(Map.of("orderSn", orderSn), "预约成功") : CommonResult.fail("预约失败");
+        return orderSn != null ? CommonResult.success(Map.of("orderSn", orderSn), "预约成功") : CommonResult.fail("当前时间不可预约");
     }
 
     @GetMapping("/orders/memberId")
@@ -78,5 +93,23 @@ public class OrderInfoController {
     public CommonResult<?> cancelBooking(@PathVariable String orderSn) throws JsonProcessingException {
         final boolean flag = orderInfoService.cancelBooking(orderSn);
         return flag ? CommonResult.success("取消成功") : CommonResult.fail("取消失败");
+    }
+
+    @GetMapping("/orders/received")
+    public CommonResult<?> getReceivedOrder() {
+        List<OrderInfo> orderInfos = orderInfoService.getReceivedOrder();
+        return CommonResult.success(orderInfos);
+    }
+
+    @PutMapping("/orders/close/{orderSn}")
+    public CommonResult<?> closeOrder(@PathVariable String orderSn) {
+        boolean flag = orderInfoService.closeOrder(orderSn);
+        return flag ? CommonResult.success("关闭成功"): CommonResult.fail("关闭失败");
+    }
+
+    @GetMapping("/orders/closed")
+    public CommonResult<?> getClosedOrder() {
+        List<OrderInfo> orderInfos = orderInfoService.getClosedOrder();
+        return CommonResult.success(orderInfos);
     }
 }

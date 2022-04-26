@@ -1,6 +1,6 @@
 package io.github.lostblackknight.order.config;
 
-import io.github.lostblackknight.properties.AlipayProperties;
+import io.github.lostblackknight.order.support.AlipayProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

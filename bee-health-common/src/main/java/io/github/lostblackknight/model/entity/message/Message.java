@@ -1,4 +1,4 @@
-package io.github.lostblackknight.message.entity;
+package io.github.lostblackknight.model.entity.message;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

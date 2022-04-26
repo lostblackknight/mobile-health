@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.lostblackknight.member.mapper.DoctorAuthMapper">
+
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.member.DoctorAuth">
+        <id property="memberId" column="id" jdbcType="BIGINT"/>
+        <result property="certificates" column="certificates" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+        <association property="member" columnPrefix="member_"
+                     resultMap="io.github.lostblackknight.member.mapper.MemberMapper.BaseResultMap"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id,certificates,
+        status,create_time,is_deleted
+    </sql>
+    <select id="getAuthList" resultType="io.github.lostblackknight.model.entity.member.DoctorAuth"
+            resultMap="BaseResultMap">
+        select
+        t_doctor_auth.member_id as id,
+        t_doctor_auth.certificates,
+        t_doctor_auth.status,
+        t_doctor_auth.create_time,
+        t_doctor_auth.is_deleted,
+        t_member.`username` as member_username,
+        t_member.nick_name as member_nick_name,
+        t_member.real_name as member_real_name,
+        t_member.phone as member_phone,
+        t_member.id as `member_id`
+        from t_doctor_auth,
+        t_member
+        <where>
+            t_doctor_auth.member_id = t_member.id
+            <if test="form.username != null">
+                and t_member.`username` like CONCAT('%', #{form.username}, '%')
+            </if>
+            <if test="form.phone != null">
+                and t_member.phone like CONCAT('%', #{form.phone}, '%')
+            </if>
+            <if test="form.nickName != null">
+                and t_member.nick_name like CONCAT('%', #{form.nickName},'%')
+            </if>
+            <if test="form.realName != null">
+                and t_member.real_name like CONCAT('%', #{form.realName},'%')
+            </if>
+            <if test="form.status != null">
+                and t_member.status = #{form.status}
+            </if>
+            and t_doctor_auth.is_deleted = 0
+        </where>
+        limit #{from}, #{to}
+    </select>
+    <select id="getAuthCount" resultType="java.lang.Long">
+        select count(*)
+        from t_doctor_auth,
+        t_member
+        <where>
+            t_doctor_auth.member_id = t_member.id
+            <if test="form.username != null">
+                and t_member.`username` like CONCAT('%', #{form.username}, '%')
+            </if>
+            <if test="form.phone != null">
+                and t_member.phone like CONCAT('%', #{form.phone}, '%')
+            </if>
+            <if test="form.nickName != null">
+                and t_member.nick_name like CONCAT('%', #{form.nickName},'%')
+            </if>
+            <if test="form.realName != null">
+                and t_member.real_name like CONCAT('%', #{form.realName},'%')
+            </if>
+            <if test="form.status != null">
+                and t_member.status = #{form.status}
+            </if>
+            and t_doctor_auth.is_deleted = 0
+        </where>
+    </select>
+</mapper>

@@ -5,6 +5,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.lostblackknight.constant.OrderConstant;
@@ -31,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -67,6 +69,21 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
                 // 不可预约
                 return null;
             }
+            final Date currentDate = new Date();
+            final Date date = DateUtil.parse(schedule.getDate(), "yyyy-MM-dd").toJdkDate();
+            final int currentDay = DateUtil.dayOfMonth(currentDate);
+            final int day = DateUtil.dayOfMonth(date);
+
+            if (day < currentDay) {
+                return null;
+            }
+            final int hour = DateUtil.hour(date, true);
+            if (schedule.getTimeType().equals("am") && day == currentDay) {
+                return null;
+            } else if (schedule.getTimeType().equals("pm") && hour < 12 & day == currentDay) {
+                return null;
+            }
+
             final TokenInfoDTO dto = TokenInfoContextHolder.get();
             orderInfo.setMemberId(dto.getUid());
             orderInfo.setOrderSn(IdUtil.getSnowflake(1L, 5L).nextIdStr());
@@ -183,6 +200,57 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean checkBooking(String scheduleId) {
+        final CommonResult<Schedule> result = hospitalClient.getScheduleById(scheduleId);
+        if (result.getCode() == 1) {
+            final Schedule schedule = result.getData();
+            if (schedule.getYuYueState() == 0) {
+                // 不可预约
+                return false;
+            }
+            final Date currentDate = new Date();
+            final Date date = DateUtil.parse(schedule.getDate(), "yyyy-MM-dd").toJdkDate();
+            final int currentDay = DateUtil.dayOfMonth(currentDate);
+            final int day = DateUtil.dayOfMonth(date);
+
+            if (day < currentDay) {
+                return false;
+            }
+            final int hour = DateUtil.hour(date, true);
+            if (schedule.getTimeType().equals("am") && day == currentDay) {
+                return false;
+            } else if (schedule.getTimeType().equals("pm") && hour < 12 & day == currentDay) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public List<OrderInfo> getReceivedOrder() {
+        final Long memberId = TokenInfoContextHolder.get().getUid();
+        return baseMapper.selectList(new QueryWrapper<OrderInfo>().eq("doctor_member_id", memberId)
+                .eq("order_status", OrderConstant.PAID));
+    }
+
+    @Override
+    public List<OrderInfo> getClosedOrder() {
+        final Long memberId = TokenInfoContextHolder.get().getUid();
+        return baseMapper.selectList(new QueryWrapper<OrderInfo>().eq("doctor_member_id", memberId)
+                .eq("order_status", OrderConstant.CLOSE));
+    }
+
+    @Override
+    public boolean closeOrder(String orderSn) {
+        final OrderInfo orderInfo = new OrderInfo();
+        orderInfo.setOrderSn(orderSn);
+        orderInfo.setOrderStatus(OrderConstant.CLOSE);
+        return SqlHelper.retBool(baseMapper.update(orderInfo, new QueryWrapper<OrderInfo>().eq("order_sn", orderSn)));
     }
 }
 

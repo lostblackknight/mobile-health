@@ -13,7 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.lostblackknight.model.dto.PayDTO;
 import io.github.lostblackknight.model.dto.PayRefundResponseDTO;
 import io.github.lostblackknight.model.dto.RefundDTO;
-import io.github.lostblackknight.properties.AlipayProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;

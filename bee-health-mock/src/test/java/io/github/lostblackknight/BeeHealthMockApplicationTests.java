@@ -1,9 +1,12 @@
 package io.github.lostblackknight;
 
+import cn.hutool.core.date.DateUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.github.lostblackknight.mock.support.BeeHealthTemplate;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Date;
 
 //@SpringBootTest
 class BeeHealthMockApplicationTests {
@@ -16,6 +19,11 @@ class BeeHealthMockApplicationTests {
 
         final String token = template.getToken();
         System.out.println(token);
+    }
+
+    @Test
+    void test() {
+        System.out.println(DateUtil.format(new Date(), "yyyy-MM-dd"));
     }
 
 }

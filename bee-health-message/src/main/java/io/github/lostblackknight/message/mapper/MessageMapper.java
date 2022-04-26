@@ -1,6 +1,6 @@
 package io.github.lostblackknight.message.mapper;
 
-import io.github.lostblackknight.message.entity.Message;
+import io.github.lostblackknight.model.entity.message.Message;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

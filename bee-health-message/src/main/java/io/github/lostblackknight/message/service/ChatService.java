@@ -1,6 +1,6 @@
 package io.github.lostblackknight.message.service;
 
-import io.github.lostblackknight.message.entity.Chat;
+import io.github.lostblackknight.model.entity.message.Chat;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.github.lostblackknight.message.vo.ChatAddForm;
 import io.github.lostblackknight.model.dto.ChatDTO;

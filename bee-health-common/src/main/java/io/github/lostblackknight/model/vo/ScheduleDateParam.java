@@ -9,6 +9,7 @@ import lombok.Data;
 public class ScheduleDateParam {
     private String hospitalCode;
     private String deptCode;
+    private String date;
     private Integer pageNum = 1;
     private Integer pageSize = 30;
 }

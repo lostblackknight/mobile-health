@@ -1,7 +1,5 @@
 package io.github.lostblackknight.message.controller;
 
-import io.github.lostblackknight.message.config.MemberClient;
-import io.github.lostblackknight.message.entity.Chat;
 import io.github.lostblackknight.message.service.ChatService;
 import io.github.lostblackknight.message.support.TokenInfoContextHolder;
 import io.github.lostblackknight.message.vo.ChatAddForm;

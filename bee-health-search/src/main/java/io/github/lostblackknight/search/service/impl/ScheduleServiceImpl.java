@@ -137,6 +137,10 @@ public class ScheduleServiceImpl implements ScheduleService {
             boolQueryBuilder.filter(QueryBuilders.termQuery("hospitalCode", param.getHospitalCode()));
         }
 
+        if (StrUtil.isNotEmpty(param.getDate())) {
+            boolQueryBuilder.filter(QueryBuilders.rangeQuery("date").from(param.getDate()));
+        }
+
         final TermsAggregationBuilder dateAgg = AggregationBuilders.terms("date_agg").field("date").order(BucketOrder.key(true));
 
         dateAgg.subAggregation(AggregationBuilders.terms("week_agg").field("week"));
@@ -266,6 +270,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         final MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
 
+
         final TermsAggregationBuilder doctorNameAgg = AggregationBuilders.terms("doctorName_agg").field("doctorName").size(999);
 
         doctorNameAgg.subAggregation(AggregationBuilders.terms("expert_agg").field("expert"));
@@ -347,9 +352,9 @@ public class ScheduleServiceImpl implements ScheduleService {
             boolQueryBuilder.filter(QueryBuilders.termQuery("doctorCode", param.getDoctorCode()));
         }
 
-        final TermsAggregationBuilder deptCodeAgg = AggregationBuilders.terms("deptCode_agg").field("deptCode.keyword").size(100);
+        final TermsAggregationBuilder deptCodeAgg = AggregationBuilders.terms("deptCode_agg").field("deptCode").size(100);
 
-        deptCodeAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName.keyword").size(100));
+        deptCodeAgg.subAggregation(AggregationBuilders.terms("deptName_agg").field("deptName").size(100));
 
         final NativeSearchQuery query = new NativeSearchQuery(boolQueryBuilder);
 
@@ -388,6 +393,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         if (StrUtil.isNotEmpty(param.getDeptCode())) {
             boolQueryBuilder.filter(QueryBuilders.termQuery("deptCode", param.getDeptCode()));
+        }
+
+        if (StrUtil.isNotEmpty(param.getDate())) {
+            boolQueryBuilder.filter(QueryBuilders.rangeQuery("date").from(param.getDate()));
         }
 
         final TermsAggregationBuilder dateAgg = AggregationBuilders.terms("date_agg").field("date").size(100).order(BucketOrder.key(true));

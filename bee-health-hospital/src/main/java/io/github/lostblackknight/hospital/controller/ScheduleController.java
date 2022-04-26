@@ -30,8 +30,9 @@ public class ScheduleController {
     public CommonResult<?> getScheduleDatesByHospitalCodeAndDeptCode(@PathVariable String deptCode,
                                                                      @PathVariable String hospitalCode,
                                                                      @PathVariable Long pageNum,
-                                                                     @PathVariable Long pageSize) {
-        PageDTO<ScheduleDateDTO> scheduleDateDTOS = scheduleService.getScheduleDatesByHospitalCodeAndDeptCode(hospitalCode, deptCode, pageNum, pageSize);
+                                                                     @PathVariable Long pageSize,
+                                                                     @RequestParam String date) {
+        PageDTO<ScheduleDateDTO> scheduleDateDTOS = scheduleService.getScheduleDatesByHospitalCodeAndDeptCode(hospitalCode, deptCode, pageNum, pageSize, date);
         return CommonResult.success(scheduleDateDTOS);
     }
 

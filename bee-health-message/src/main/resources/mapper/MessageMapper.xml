@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.github.lostblackknight.message.mapper.MessageMapper">
 
-    <resultMap id="BaseResultMap" type="io.github.lostblackknight.message.entity.Message">
+    <resultMap id="BaseResultMap" type="io.github.lostblackknight.model.entity.message.Message">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="fromId" column="from_id" jdbcType="BIGINT"/>
             <result property="toId" column="to_id" jdbcType="BIGINT"/>

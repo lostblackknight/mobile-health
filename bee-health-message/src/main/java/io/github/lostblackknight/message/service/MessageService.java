@@ -1,6 +1,6 @@
 package io.github.lostblackknight.message.service;
 
-import io.github.lostblackknight.message.entity.Message;
+import io.github.lostblackknight.model.entity.message.Message;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

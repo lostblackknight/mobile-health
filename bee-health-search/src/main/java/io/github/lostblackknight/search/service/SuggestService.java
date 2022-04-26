@@ -14,4 +14,6 @@ public interface SuggestService {
     void saveKeyword(SuggestESModel model);
 
     void saveKeywords(List<SuggestESModel> models);
+
+    void removeById(String id);
 }

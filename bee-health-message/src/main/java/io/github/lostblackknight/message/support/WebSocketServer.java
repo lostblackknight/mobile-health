@@ -3,7 +3,7 @@ package io.github.lostblackknight.message.support;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.lostblackknight.constant.MessageConstant;
-import io.github.lostblackknight.message.entity.Message;
+import io.github.lostblackknight.model.entity.message.Message;
 import io.github.lostblackknight.message.service.MessageService;
 import io.github.lostblackknight.message.vo.MessageModel;
 import lombok.extern.slf4j.Slf4j;

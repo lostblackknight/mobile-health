@@ -1,19 +1,11 @@
 package io.github.lostblackknight.search.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import io.github.lostblackknight.model.entity.search.DeptES;
-import io.github.lostblackknight.model.entity.search.HospitalES;
-import io.github.lostblackknight.model.entity.search.ScheduleES;
-import io.github.lostblackknight.model.entity.search.SuggestES;
+import io.github.lostblackknight.model.entity.search.*;
 import io.github.lostblackknight.model.vo.CommonResult;
-import io.github.lostblackknight.search.entity.DeptESModel;
-import io.github.lostblackknight.search.entity.HospitalESModel;
-import io.github.lostblackknight.search.entity.ScheduleESModel;
-import io.github.lostblackknight.search.entity.SuggestESModel;
-import io.github.lostblackknight.search.service.DeptService;
-import io.github.lostblackknight.search.service.HospitalService;
-import io.github.lostblackknight.search.service.ScheduleService;
-import io.github.lostblackknight.search.service.SuggestService;
+import io.github.lostblackknight.search.entity.*;
+import io.github.lostblackknight.search.repository.ArticleRepository;
+import io.github.lostblackknight.search.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.elasticsearch.core.completion.Completion;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +28,8 @@ public class ApiController {
     private final ScheduleService scheduleService;
 
     private final SuggestService suggestService;
+
+    private final ArticleService articleService;
 
     @PostMapping("/hospitals/upload")
     public CommonResult<?> uploadHospitalToES(@RequestBody HospitalES hospitalES) {
@@ -67,6 +61,14 @@ public class ApiController {
         model.setId(suggestES.getId());
         model.setSuggest(new Completion(List.of(suggestES.getSuggest())));
         suggestService.saveKeyword(model);
+        return CommonResult.success("上传成功");
+    }
+
+    @PostMapping("/articles/upload")
+    public CommonResult<?> uploadArticleToES(@RequestBody ArticleES articleES) {
+        final ArticleESModel model = new ArticleESModel();
+        BeanUtil.copyProperties(articleES, model);
+        articleService.saveArticle(model);
         return CommonResult.success("上传成功");
     }
 }

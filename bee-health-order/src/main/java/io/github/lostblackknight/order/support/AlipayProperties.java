@@ -1,4 +1,4 @@
-package io.github.lostblackknight.properties;
+package io.github.lostblackknight.order.support;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

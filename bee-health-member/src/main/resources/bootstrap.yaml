@@ -9,7 +9,7 @@ spring:
       jmx-name: org.springframework.boot:type=Admin,name=BeeHealthMemberApplication
   cloud:
     nacos:
-      server-addr: 192.168.86.128:8848
+      server-addr: 192.168.86.130:8848
       config:
         file-extension: yaml
   datasource:
@@ -21,7 +21,7 @@ spring:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
   redis:
-    host: 192.168.86.128
+    host: 192.168.86.130
     port: 6379
 
 mybatis-plus:
@@ -29,6 +29,7 @@ mybatis-plus:
   configuration:
     cache-enabled: false # 关闭二级缓存
     local-cache-scope: statement # 关闭一级缓存
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     banner: false # 关闭控制台logo
     db-config:

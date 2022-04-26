@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import io.github.lostblackknight.message.config.MemberClient;
-import io.github.lostblackknight.message.entity.Chat;
+import io.github.lostblackknight.model.entity.message.Chat;
 import io.github.lostblackknight.message.service.ChatService;
 import io.github.lostblackknight.message.mapper.ChatMapper;
 import io.github.lostblackknight.message.vo.ChatAddForm;

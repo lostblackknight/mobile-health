@@ -62,4 +62,9 @@ public class SuggestServiceImpl implements SuggestService {
     public void saveKeywords(List<SuggestESModel> models) {
         suggestRepository.saveAll(models);
     }
+
+    @Override
+    public void removeById(String id) {
+        suggestRepository.deleteById(id);
+    }
 }

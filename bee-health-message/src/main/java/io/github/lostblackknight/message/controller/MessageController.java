@@ -1,6 +1,6 @@
 package io.github.lostblackknight.message.controller;
 
-import io.github.lostblackknight.message.entity.Message;
+import io.github.lostblackknight.model.entity.message.Message;
 import io.github.lostblackknight.message.service.MessageService;
 import io.github.lostblackknight.model.vo.CommonResult;
 import lombok.RequiredArgsConstructor;

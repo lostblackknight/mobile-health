@@ -2,7 +2,7 @@ package io.github.lostblackknight.message.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.github.lostblackknight.message.entity.Message;
+import io.github.lostblackknight.model.entity.message.Message;
 import io.github.lostblackknight.message.mapper.MessageMapper;
 import io.github.lostblackknight.message.service.MessageService;
 import io.github.lostblackknight.message.support.TokenInfoContextHolder;

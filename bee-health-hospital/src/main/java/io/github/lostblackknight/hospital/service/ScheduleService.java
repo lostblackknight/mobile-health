@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ScheduleService extends IService<Schedule> {
 
-    PageDTO<ScheduleDateDTO> getScheduleDatesByHospitalCodeAndDeptCode(String hospitalCode, String deptCode, Long pageNum, Long pageSize);
+    PageDTO<ScheduleDateDTO> getScheduleDatesByHospitalCodeAndDeptCode(String hospitalCode, String deptCode, Long pageNum, Long pageSize, String date);
 
     /**
      * 判断某个医院某个科室某一天是否有号

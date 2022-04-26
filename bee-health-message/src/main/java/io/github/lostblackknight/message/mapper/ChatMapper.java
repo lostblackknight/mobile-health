@@ -1,6 +1,6 @@
 package io.github.lostblackknight.message.mapper;
 
-import io.github.lostblackknight.message.entity.Chat;
+import io.github.lostblackknight.model.entity.message.Chat;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

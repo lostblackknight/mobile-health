@@ -1,5 +1,6 @@
 package io.github.lostblackknight.mock.controller;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.http.HttpUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -71,6 +73,34 @@ public class ApiController {
         return result;
     }
 
+    private String getWeek(int i) {
+        String week = "";
+        switch (i) {
+            case 1:
+                week = "周日";
+                break;
+            case 2:
+                week = "周一";
+                break;
+            case 3:
+                week = "周二";
+                break;
+            case 4:
+                week = "周三";
+                break;
+            case 5:
+                week = "周四";
+                break;
+            case 6:
+                week = "周五";
+                break;
+            case 7:
+                week = "周六";
+                break;
+        }
+        return week;
+    }
+
     @GetMapping(path = "/schedules/upload", produces = MediaType.APPLICATION_JSON_VALUE)
     public String uploadScheduleData(HospitalClientDetailVO vo) throws IOException {
         final BeeHealthTemplate template = new BeeHealthTemplate(vo.getClientId(), vo.getSecret());
@@ -90,9 +120,57 @@ public class ApiController {
         String result = "";
 
         for (Schedule schedule : schedules) {
-            if(schedule.getMemberId() == null) {
+            if (schedule.getMemberId() == null) {
                 schedule.setMemberId(0L);
             }
+            // 跟新日期
+            final String date = schedule.getDate();
+
+            switch (date) {
+                case "2022-04-16":
+                    final String format = DateUtil.format(new Date(), "yyyy-MM-dd");
+                    schedule.setDate(format);
+                    final int week = DateUtil.dayOfWeek(new Date());
+                    schedule.setWeek(getWeek(week));
+                    break;
+                case "2022-04-17":
+                    final String format1 = DateUtil.format(DateUtil.offsetDay(new Date(), 1), "yyyy-MM-dd");
+                    schedule.setDate(format1);
+                    final int week1 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 1));
+                    schedule.setWeek(getWeek(week1));
+                    break;
+                case "2022-04-18":
+                    final String format2 = DateUtil.format(DateUtil.offsetDay(new Date(), 2), "yyyy-MM-dd");
+                    schedule.setDate(format2);
+                    final int week2 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 2));
+                    schedule.setWeek(getWeek(week2));
+                    break;
+                case "2022-04-19":
+                    final String format3 = DateUtil.format(DateUtil.offsetDay(new Date(), 3), "yyyy-MM-dd");
+                    schedule.setDate(format3);
+                    final int week3 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 3));
+                    schedule.setWeek(getWeek(week3));
+                    break;
+                case "2022-04-20":
+                    final String format4 = DateUtil.format(DateUtil.offsetDay(new Date(), 4), "yyyy-MM-dd");
+                    schedule.setDate(format4);
+                    final int week4 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 4));
+                    schedule.setWeek(getWeek(week4));
+                    break;
+                case "2022-04-21":
+                    final String format5 = DateUtil.format(DateUtil.offsetDay(new Date(), 5), "yyyy-MM-dd");
+                    schedule.setDate(format5);
+                    final int week5 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 5));
+                    schedule.setWeek(getWeek(week5));
+                    break;
+                case "2022-04-22":
+                    final String format6 = DateUtil.format(DateUtil.offsetDay(new Date(), 6), "yyyy-MM-dd");
+                    schedule.setDate(format6);
+                    final int week6 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 6));
+                    schedule.setWeek(getWeek(week6));
+                    break;
+            }
+
             result = HttpUtil.createPost(BeeHealthTemplate.HOSPITAL_API + "/schedules/upload")
                     .auth(BeeHealthTemplate.AUTH_PREFIX + token)
                     .body(new ObjectMapper().writeValueAsString(schedule))

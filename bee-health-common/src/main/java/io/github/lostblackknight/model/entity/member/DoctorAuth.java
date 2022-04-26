@@ -1,33 +1,34 @@
-package io.github.lostblackknight.message.entity;
+package io.github.lostblackknight.model.entity.member;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 
- * @TableName t_chat
+ * @TableName t_doctor_auth
  */
-@TableName(value ="t_chat")
+@TableName(value ="t_doctor_auth")
 @Data
-public class Chat implements Serializable {
-    /**
-     * ID
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+public class DoctorAuth implements Serializable {
 
     /**
      * 会员ID
      */
+    @TableId
     private Long memberId;
 
     /**
-     * 另一个会员ID
+     * 证件照
      */
-    private Long anotherId;
+    private String certificates;
+
+    /**
+     * 状态
+     */
+    private Long status;
 
     /**
      * 创建时间
@@ -35,8 +36,14 @@ public class Chat implements Serializable {
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
+    /**
+     * 逻辑删除
+     */
     @TableLogic
     private Integer isDeleted;
+
+    @TableField(exist = false)
+    private Member member;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

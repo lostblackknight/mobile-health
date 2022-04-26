@@ -26,11 +26,12 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule>
         implements ScheduleService {
 
     @Override
-    public PageDTO<ScheduleDateDTO> getScheduleDatesByHospitalCodeAndDeptCode(String hospitalCode, String deptCode, Long pageNum, Long pageSize) {
+    public PageDTO<ScheduleDateDTO> getScheduleDatesByHospitalCodeAndDeptCode(String hospitalCode, String deptCode, Long pageNum, Long pageSize, String date) {
         final List<Schedule> scheduleDates = baseMapper.selectList(new QueryWrapper<Schedule>()
                 .select("DISTINCT hospital_code, dept_code, date, `week`")
                 .eq("hospital_code", hospitalCode)
                 .eq("dept_code", deptCode)
+                .ge("date", date)
                 .orderByAsc("date")
         );
 
