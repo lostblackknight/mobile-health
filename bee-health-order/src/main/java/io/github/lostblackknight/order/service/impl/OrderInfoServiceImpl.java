@@ -71,10 +71,12 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             }
             final Date currentDate = new Date();
             final Date date = DateUtil.parse(schedule.getDate(), "yyyy-MM-dd").toJdkDate();
+            final int month = DateUtil.month(date);
             final int currentDay = DateUtil.dayOfMonth(currentDate);
+            final int currentMonth = DateUtil.month(currentDate);
             final int day = DateUtil.dayOfMonth(date);
 
-            if (day < currentDay) {
+            if (day < currentDay && month == currentMonth) {
                 return null;
             }
             final int hour = DateUtil.hour(date, true);
@@ -213,10 +215,12 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             }
             final Date currentDate = new Date();
             final Date date = DateUtil.parse(schedule.getDate(), "yyyy-MM-dd").toJdkDate();
+            final int month = DateUtil.month(date);
             final int currentDay = DateUtil.dayOfMonth(currentDate);
+            final int currentMonth = DateUtil.month(currentDate);
             final int day = DateUtil.dayOfMonth(date);
 
-            if (day < currentDay) {
+            if (day < currentDay && month == currentMonth) {
                 return false;
             }
             final int hour = DateUtil.hour(date, true);

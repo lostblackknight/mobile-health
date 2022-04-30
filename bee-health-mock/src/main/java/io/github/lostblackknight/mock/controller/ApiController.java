@@ -120,6 +120,12 @@ public class ApiController {
         String result = "";
 
         for (Schedule schedule : schedules) {
+            if (schedule.getDoctorName().equals("张丽")) {
+                schedule.setMemberId(3L);
+            }
+            if (schedule.getDoctorName().equals("王波")) {
+                schedule.setMemberId(2L);
+            }
             if (schedule.getMemberId() == null) {
                 schedule.setMemberId(0L);
             }

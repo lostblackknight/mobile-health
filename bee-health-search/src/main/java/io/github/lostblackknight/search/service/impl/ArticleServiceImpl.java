@@ -10,10 +10,17 @@ import io.github.lostblackknight.search.repository.DeptRepository;
 import io.github.lostblackknight.search.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction;
+import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
+import org.elasticsearch.index.query.functionscore.ScriptScoreFunctionBuilder;
+import org.elasticsearch.search.sort.ScoreSortBuilder;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHits;
@@ -105,10 +112,35 @@ public class ArticleServiceImpl implements ArticleService {
             boolQueryBuilder.filter(QueryBuilders.termQuery("uid", param.getUid()));
         }
 
-        final NativeSearchQuery query = new NativeSearchQuery(boolQueryBuilder);
+//        final FunctionScoreQueryBuilder.FilterFunctionBuilder[] builders = new FunctionScoreQueryBuilder.FilterFunctionBuilder[]{
+//                new FunctionScoreQueryBuilder.FilterFunctionBuilder(
+//                        ScoreFunctionBuilders
+//                                .fieldValueFactorFunction("readCount")
+//                                .factor(2.0F).missing(1.0F)
+//                ),
+//                new FunctionScoreQueryBuilder.FilterFunctionBuilder(
+//                        ScoreFunctionBuilders
+//                                .fieldValueFactorFunction("likeCount")
+//                                .factor(8.0F).missing(1.0F)
+//                ),
+//                new FunctionScoreQueryBuilder.FilterFunctionBuilder(
+//                        ScoreFunctionBuilders
+//                                .fieldValueFactorFunction("collectionCount")
+//                                .factor(32.0F).missing(1.0F)
+//                )
+//        };
+
+
+        final ScriptScoreFunctionBuilder scriptScoreFunctionBuilder = ScoreFunctionBuilders
+                .scriptFunction("saturation((doc['readCount'].value * 0.1) + (doc['likeCount'].value * 0.4) + (doc['collectionCount'].value * 0.5), 1)");
+
+        final FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(boolQueryBuilder, scriptScoreFunctionBuilder);
+
+        final NativeSearchQuery query = new NativeSearchQuery(functionScoreQueryBuilder);
         query.setPageable(PageRequest.of(param.getPageNum() - 1, param.getPageSize()));
 
         final SearchHits<ArticleESModel> searchHits = elasticsearchRestTemplate.search(query, ArticleESModel.class);
         return searchHits.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
     }
+
 }

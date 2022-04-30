@@ -98,9 +98,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
 
         final ArticleES articleES = new ArticleES();
         BeanUtil.copyProperties(article, articleES);
-        articleES.setCollectionCount(article1.getCollectionCount());
-        articleES.setLikeCount(article1.getLikeCount());
-        articleES.setReadCount(article1.getReadCount());
+        articleES.setCollectionCount(article.getCollectionCount() == null ? article1.getCollectionCount() : article.getCollectionCount());
+        articleES.setLikeCount(article.getLikeCount() == null ? article1.getLikeCount() : article.getCollectionCount());
+        articleES.setReadCount(article.getReadCount() == null ? article1.getReadCount() : article.getReadCount());
         // 头像 分类名
         final Category category = categoryService.getById(article1.getCategoryId());
         articleES.setCategoryName(category.getName());
