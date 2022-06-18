@@ -13,4 +13,6 @@ import java.util.List;
 public interface MemberRoleService extends IService<MemberRole> {
 
     List<Long> getRoleIdsByMemberId(Long id);
+
+    long getMemberCountByRoleId(Long id);
 }

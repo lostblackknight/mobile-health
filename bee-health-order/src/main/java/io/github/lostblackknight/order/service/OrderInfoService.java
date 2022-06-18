@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.github.lostblackknight.model.entity.order.OrderInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,4 +29,8 @@ public interface OrderInfoService extends IService<OrderInfo> {
     List<OrderInfo> getClosedOrder();
 
     boolean closeOrder(String orderSn);
+
+    List<OrderInfo> getOrderByStatusList(List<Integer> status);
+
+    long getOrderByDate(Date date);
 }

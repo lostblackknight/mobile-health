@@ -149,6 +149,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
     @Override
+    public long getUserCountByRoleId(Long id) {
+        return userRoleService.count(new QueryWrapper<UserRole>().eq("role_id", id));
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final User userEntity = baseMapper.selectOne(new QueryWrapper<User>()
                 .eq("username", username));

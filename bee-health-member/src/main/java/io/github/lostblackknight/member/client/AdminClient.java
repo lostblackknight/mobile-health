@@ -20,4 +20,10 @@ public interface AdminClient {
 
     @GetMapping("/roles/batch")
     CommonResult<List<Role>> getRolesByIds(@RequestParam List<Long> ids);
+
+    @GetMapping("/roles/list")
+    CommonResult<List<Role>> getRolesByList();
+
+    @GetMapping("/users/count/roleId/{id}")
+    CommonResult<Long> getUserCountByRoleId(@PathVariable Long id);
 }

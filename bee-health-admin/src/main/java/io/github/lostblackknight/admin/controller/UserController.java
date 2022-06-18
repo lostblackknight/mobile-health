@@ -29,6 +29,12 @@ public class UserController {
 
     private final UserService userService;
 
+    @GetMapping("/users/count/roleId/{id}")
+    public CommonResult<?> getUserCountByRoleId(@PathVariable Long id) {
+        long count = userService.getUserCountByRoleId(id);
+        return CommonResult.success(count);
+    }
+
     @GetMapping("/users/info")
     public CommonResult<UserInfoVO> getUserInfo() {
         final TokenInfoDTO tokenInfoDTO = TokenInfoContextHolder.get();

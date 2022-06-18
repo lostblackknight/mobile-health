@@ -21,6 +21,12 @@ import org.springframework.web.bind.annotation.*;
 public class HospitalController {
     private final HospitalService hospitalService;
 
+    @GetMapping("/hospitals/count/roleId/{id}")
+    public CommonResult<Long> getHospitalCountByRoleId(@PathVariable Long id) {
+        final long count = hospitalService.getHospitalCountByRoleId(id);
+        return CommonResult.success(count);
+    }
+
     @GetMapping("/hospitals/page/{pageNum}/{pageSize}")
     public CommonResult<?> getHospitalsByPage(@PathVariable Long pageNum,
                                               @PathVariable Long pageSize,

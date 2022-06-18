@@ -30,4 +30,6 @@ public interface UserService extends IService<User> {
     boolean modifyUserStatusById(Long id, Integer status);
 
     boolean resetUserPasswordById(Long id, String password);
+
+    long getUserCountByRoleId(Long id);
 }

@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -79,10 +80,10 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             if (day < currentDay && month == currentMonth) {
                 return null;
             }
-            final int hour = DateUtil.hour(date, true);
+            final int hour = DateUtil.hour(currentDate, true);
             if (schedule.getTimeType().equals("am") && day == currentDay) {
                 return null;
-            } else if (schedule.getTimeType().equals("pm") && hour < 12 & day == currentDay) {
+            } else if (schedule.getTimeType().equals("pm") && hour >= 12 & day == currentDay) {
                 return null;
             }
 
@@ -98,7 +99,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             orderInfo.setDoctorName(schedule.getDoctorName());
             orderInfo.setLevelName(schedule.getLevelName());
             orderInfo.setScheduleId(schedule.getScheduleId());
-            orderInfo.setReserveDate(DateUtil.parse(schedule.getDate(),"yyyy-MM-dd"));
+            orderInfo.setReserveDate(DateUtil.parse(schedule.getDate(), "yyyy-MM-dd"));
             orderInfo.setReserveTime(Objects.equals(schedule.getTimeType(), "am") ? 0 : 1);
             orderInfo.setAmount(schedule.getAmount());
 
@@ -223,10 +224,10 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             if (day < currentDay && month == currentMonth) {
                 return false;
             }
-            final int hour = DateUtil.hour(date, true);
+            final int hour = DateUtil.hour(currentDate, true);
             if (schedule.getTimeType().equals("am") && day == currentDay) {
                 return false;
-            } else if (schedule.getTimeType().equals("pm") && hour < 12 & day == currentDay) {
+            } else if (schedule.getTimeType().equals("pm") && hour >= 12 & day == currentDay) {
                 return false;
             }
             return true;
@@ -255,6 +256,23 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         orderInfo.setOrderSn(orderSn);
         orderInfo.setOrderStatus(OrderConstant.CLOSE);
         return SqlHelper.retBool(baseMapper.update(orderInfo, new QueryWrapper<OrderInfo>().eq("order_sn", orderSn)));
+    }
+
+    @Override
+    public List<OrderInfo> getOrderByStatusList(List<Integer> status) {
+        final ArrayList<OrderInfo> list = new ArrayList<>();
+        for (Integer s : status) {
+            final List<OrderInfo> orderInfos = baseMapper.selectList(new QueryWrapper<OrderInfo>().eq("order_status", s));
+            list.addAll(orderInfos);
+        }
+        return list;
+    }
+
+    @Override
+    public long getOrderByDate(Date date) {
+        final String from = DateUtil.format(date, "yyyy-MM-dd") + " 00:00:00";
+        final String end = DateUtil.format(date, "yyyy-MM-dd") + " 23:59:59";
+        return baseMapper.selectCount(new QueryWrapper<OrderInfo>().between("create_time", from, end));
     }
 }
 

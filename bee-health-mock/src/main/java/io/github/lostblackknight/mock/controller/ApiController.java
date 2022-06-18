@@ -132,47 +132,49 @@ public class ApiController {
             // 跟新日期
             final String date = schedule.getDate();
 
+            final Date currentDate = new Date();
+
             switch (date) {
                 case "2022-04-16":
-                    final String format = DateUtil.format(new Date(), "yyyy-MM-dd");
+                    final String format = DateUtil.format(currentDate, "yyyy-MM-dd");
                     schedule.setDate(format);
-                    final int week = DateUtil.dayOfWeek(new Date());
+                    final int week = DateUtil.dayOfWeek(currentDate);
                     schedule.setWeek(getWeek(week));
                     break;
                 case "2022-04-17":
-                    final String format1 = DateUtil.format(DateUtil.offsetDay(new Date(), 1), "yyyy-MM-dd");
+                    final String format1 = DateUtil.format(DateUtil.offsetDay(currentDate, 1), "yyyy-MM-dd");
                     schedule.setDate(format1);
-                    final int week1 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 1));
+                    final int week1 = DateUtil.dayOfWeek(DateUtil.offsetDay(currentDate, 1));
                     schedule.setWeek(getWeek(week1));
                     break;
                 case "2022-04-18":
-                    final String format2 = DateUtil.format(DateUtil.offsetDay(new Date(), 2), "yyyy-MM-dd");
+                    final String format2 = DateUtil.format(DateUtil.offsetDay(currentDate, 2), "yyyy-MM-dd");
                     schedule.setDate(format2);
-                    final int week2 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 2));
+                    final int week2 = DateUtil.dayOfWeek(DateUtil.offsetDay(currentDate, 2));
                     schedule.setWeek(getWeek(week2));
                     break;
                 case "2022-04-19":
-                    final String format3 = DateUtil.format(DateUtil.offsetDay(new Date(), 3), "yyyy-MM-dd");
+                    final String format3 = DateUtil.format(DateUtil.offsetDay(currentDate, 3), "yyyy-MM-dd");
                     schedule.setDate(format3);
-                    final int week3 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 3));
+                    final int week3 = DateUtil.dayOfWeek(DateUtil.offsetDay(currentDate, 3));
                     schedule.setWeek(getWeek(week3));
                     break;
                 case "2022-04-20":
-                    final String format4 = DateUtil.format(DateUtil.offsetDay(new Date(), 4), "yyyy-MM-dd");
+                    final String format4 = DateUtil.format(DateUtil.offsetDay(currentDate, 4), "yyyy-MM-dd");
                     schedule.setDate(format4);
-                    final int week4 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 4));
+                    final int week4 = DateUtil.dayOfWeek(DateUtil.offsetDay(currentDate, 4));
                     schedule.setWeek(getWeek(week4));
                     break;
                 case "2022-04-21":
-                    final String format5 = DateUtil.format(DateUtil.offsetDay(new Date(), 5), "yyyy-MM-dd");
+                    final String format5 = DateUtil.format(DateUtil.offsetDay(currentDate, 5), "yyyy-MM-dd");
                     schedule.setDate(format5);
-                    final int week5 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 5));
+                    final int week5 = DateUtil.dayOfWeek(DateUtil.offsetDay(currentDate, 5));
                     schedule.setWeek(getWeek(week5));
                     break;
                 case "2022-04-22":
-                    final String format6 = DateUtil.format(DateUtil.offsetDay(new Date(), 6), "yyyy-MM-dd");
+                    final String format6 = DateUtil.format(DateUtil.offsetDay(currentDate, 6), "yyyy-MM-dd");
                     schedule.setDate(format6);
-                    final int week6 = DateUtil.dayOfWeek(DateUtil.offsetDay(new Date(), 6));
+                    final int week6 = DateUtil.dayOfWeek(DateUtil.offsetDay(currentDate, 6));
                     schedule.setWeek(getWeek(week6));
                     break;
             }

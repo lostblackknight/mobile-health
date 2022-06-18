@@ -27,6 +27,11 @@ public class MemberRoleServiceImpl extends ServiceImpl<MemberRoleMapper, MemberR
                 .map(MemberRole::getRoleId)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public long getMemberCountByRoleId(Long id) {
+        return baseMapper.selectCount(new QueryWrapper<MemberRole>().eq("role_id", id));
+    }
 }
 
 
