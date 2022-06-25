@@ -1,0 +1,37 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: ${NACOS_SERVICE_HOST}:${NACOS_SERVICE_PORT}
+      config:
+        file-extension: yaml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/${MYSQL_SERVICE_DB}?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_SERVICE_USERNAME}
+    password: ${MYSQL_SERVICE_PASSWORD}
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    cache-enabled: false # 关闭二级缓存
+    local-cache-scope: statement # 关闭一级缓存
+  global-config:
+    banner: false # 关闭控制台logo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: all
+
+jwt:
+  access-token:
+    secret: secret-access
+    expires-at: 525600 # 1年
+
+logging:
+  file:
+    path: /logs

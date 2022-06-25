@@ -1,0 +1,16 @@
+spring:
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 100MB
+  cloud:
+    nacos:
+      server-addr: 192.168.86.130:8848
+      config:
+        file-extension: yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: all

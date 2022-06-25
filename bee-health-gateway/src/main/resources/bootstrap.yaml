@@ -2,79 +2,10 @@ server:
   port: 7001
 
 spring:
+  profiles:
+    active: dev
   application:
+    name: bee-health-gateway
     admin:
       enabled: true
       jmx-name: org.springframework.boot:type=Admin,name=BeeHealthGatewayApplication
-    name: bee-health-gateway
-  cloud:
-    nacos:
-      server-addr: 192.168.86.130:8848
-      config:
-        file-extension: yaml
-    gateway:
-      routes:
-        - id: admin_route
-          uri: lb://bee-health-admin:7002
-          predicates:
-            - Path=/api/admin/**
-          filters:
-            - RewritePath=/api/admin/?(?<segment>.*), /$\{segment}
-        - id: hospital_route
-          uri: lb://bee-health-hospital:7003
-          predicates:
-            - Path=/api/hospital/**
-          filters:
-            - RewritePath=/api/hospital/?(?<segment>.*), /$\{segment}
-        - id: member_route
-          uri: lb://bee-health-member:7004
-          predicates:
-            - Path=/api/member/**
-          filters:
-            - RewritePath=/api/member/?(?<segment>.*), /$\{segment}
-        - id: message_route
-          uri: lb://bee-health-message:7005
-          predicates:
-            - Path=/api/message/**
-          filters:
-            - RewritePath=/api/message/?(?<segment>.*), /$\{segment}
-        - id: order_route
-          uri: lb://bee-health-order:7006
-          predicates:
-            - Path=/api/order/**
-          filters:
-            - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
-        - id: search_route
-          uri: lb://bee-health-search:7007
-          predicates:
-            - Path=/api/search/**
-          filters:
-            - RewritePath=/api/search/?(?<segment>.*), /$\{segment}
-        - id: thirdparty_route
-          uri: lb://bee-health-third-party:7008
-          predicates:
-            - Path=/api/thirdparty/**
-          filters:
-            - RewritePath=/api/thirdparty/?(?<segment>.*), /$\{segment}
-        - id: topic_route
-          uri: lb://bee-health-topic:7009
-          predicates:
-            - Path=/api/topic/**
-          filters:
-            - RewritePath=/api/topic/?(?<segment>.*), /$\{segment}
-        - id: uaa_route
-          uri: lb://bee-health-uaa:7010
-          predicates:
-            - Path=/api/uaa/**
-          filters:
-            - RewritePath=/api/uaa/?(?<segment>.*), /$\{segment}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: all
-
-jwt:
-  access-token:
-    secret: secret-access

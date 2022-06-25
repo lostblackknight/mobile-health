@@ -212,6 +212,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             final Schedule schedule = result.getData();
             if (schedule.getYuYueState() == 0) {
                 // 不可预约
+                log.error("schedule.getYuYueState() == 0");
                 return false;
             }
             final Date currentDate = new Date();
@@ -221,13 +222,23 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
             final int currentMonth = DateUtil.month(currentDate);
             final int day = DateUtil.dayOfMonth(date);
 
+            log.error("month = " + month);
+            log.error("currentMonth = " + currentMonth);
+            log.error("day = " + day);
+            log.error("currentDay = " + currentDay);
+
             if (day < currentDay && month == currentMonth) {
+                log.error("day < currentDay && month == currentMonth");
                 return false;
             }
             final int hour = DateUtil.hour(currentDate, true);
+
+            log.error("currentHour = " + hour);
             if (schedule.getTimeType().equals("am") && day == currentDay) {
+                log.error("schedule.getTimeType().equals(\"am\") && day == currentDay");
                 return false;
             } else if (schedule.getTimeType().equals("pm") && hour >= 12 & day == currentDay) {
+                log.error("schedule.getTimeType().equals(\"pm\") && hour >= 12 & day == currentDay");
                 return false;
             }
             return true;

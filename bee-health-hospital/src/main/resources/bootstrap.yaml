@@ -2,40 +2,10 @@ server:
   port: 7003
 
 spring:
+  profiles:
+    active: dev
   application:
     name: bee-health-hospital
     admin:
       enabled: true
       jmx-name: org.springframework.boot:type=Admin,name=BeeHealthHospitalApplication
-  cloud:
-    nacos:
-      server-addr: 192.168.86.130:8848
-      config:
-        file-extension: yaml
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bee_health_hospital?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: root
-    password: root
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
-
-mybatis-plus:
-  mapper-locations: classpath*:/mapper/**/*.xml
-  configuration:
-    cache-enabled: false # 关闭二级缓存
-    local-cache-scope: statement # 关闭一级缓存
-  global-config:
-    banner: false # 关闭控制台logo
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: all
-
-jwt:
-  access-token:
-    secret: secret-access
-    expires-at: 525600 # 1年

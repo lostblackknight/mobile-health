@@ -22,8 +22,8 @@ public class BeeHealthTemplate {
     private String clientId = "";
     private String clientSecret = "";
 
-    public static final String HOSPITAL_API = "http://localhost:7001/api/hospital";
-    public static final String TOKEN_API = "http://localhost:7001/api/hospital/token";
+    public static final String HOSPITAL_API = "http://192.168.86.131:7001/api/hospital";
+    public static final String TOKEN_API = "http://192.168.86.131:7001/api/hospital/token";
     public static final String AUTH_PREFIX = "Bearer ";
 
 

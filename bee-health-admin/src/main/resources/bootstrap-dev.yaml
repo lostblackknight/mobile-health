@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: 192.168.86.130:8848
+      config:
+        file-extension: yaml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bee_health_admin?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    cache-enabled: false # 关闭二级缓存
+    local-cache-scope: statement # 关闭一级缓存
+  global-config:
+    banner: false # 关闭控制台logo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: all
+
+jwt:
+  access-token:
+    secret: secret-access
+    expires-at: 240 # 2小时
+  refresh-token:
+    secret: secret-refresh
+    expires-at: 1440 # 1天
+logging:
+  level:
+    io.github.lostblackknight.admin: info

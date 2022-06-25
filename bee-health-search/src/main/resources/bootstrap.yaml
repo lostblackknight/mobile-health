@@ -2,25 +2,10 @@ server:
   port: 7007
 
 spring:
+  profiles:
+    active: dev
   application:
     name: bee-health-search
     admin:
       enabled: true
       jmx-name: org.springframework.boot:type=Admin,name=BeeHealthSearchApplication
-  cloud:
-    nacos:
-      server-addr: 192.168.86.130:8848
-      config:
-        file-extension: yaml
-  elasticsearch:
-    rest:
-      uris: http://192.168.86.130:9200
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: all

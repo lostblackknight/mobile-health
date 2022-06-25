@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
@@ -25,12 +26,23 @@ import java.util.List;
 @Slf4j
 public class ApiController {
 
+    @GetMapping("/test")
+    public Hospital test() throws IOException {
+        final InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/北京天使儿童医院-hospital.json");
+        final ObjectMapper mapper = new ObjectMapper();
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
+
+        final Hospital hospital = mapper.readValue(is, Hospital.class);
+        return hospital;
+    }
+
     @GetMapping(path = "/hospitals/upload", produces = MediaType.APPLICATION_JSON_VALUE)
     public String uploadHospitalData(HospitalClientDetailVO vo) throws IOException {
         final BeeHealthTemplate template = new BeeHealthTemplate(vo.getClientId(), vo.getSecret());
         final String token = template.getToken();
 
-        final FileInputStream is = new FileInputStream("data/" + vo.getHospitalName() + "-hospital.json");
+        final InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/" + vo.getHospitalName() + "-hospital.json");
+//        final FileInputStream is = new FileInputStream("data/" + vo.getHospitalName() + "-hospital.json");
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
 
@@ -50,7 +62,8 @@ public class ApiController {
 
         log.info("申请的token为：{}", token);
 
-        final FileInputStream is = new FileInputStream("data/" + vo.getHospitalName() + "-dept.json");
+        final InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/" + vo.getHospitalName() + "-dept.json");
+//        final FileInputStream is = new FileInputStream("data/" + vo.getHospitalName() + "-dept.json");
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
 
@@ -106,7 +119,8 @@ public class ApiController {
         final BeeHealthTemplate template = new BeeHealthTemplate(vo.getClientId(), vo.getSecret());
         final String token = template.getToken();
 
-        final FileInputStream is = new FileInputStream("data/" + vo.getHospitalName() + "-schedule.json");
+        final InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/" + vo.getHospitalName() + "-schedule.json");
+//        final FileInputStream is = new FileInputStream("data/" + vo.getHospitalName() + "-schedule.json");
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
 

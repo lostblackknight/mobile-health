@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  bee-health-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bee-health-service:latest
+    container_name: bee-health-service
+    volumes:
+      - ./docker/bee-health-service/volumes/app:/app
+    networks:
+      - bee-health
+
+networks:
+  bee-health:
+    external: true
