@@ -70,6 +70,11 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <!-- 产生的构件的文件名，默认值是${project.artifactId}-${version}。 -->
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
     <repositories>
         <repository>
             <id>maven-aliyun</id>
