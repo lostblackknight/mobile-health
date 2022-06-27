@@ -4,7 +4,7 @@ services:
   bee-health-service:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-admin
     image: bee-health-service:latest
     container_name: bee-health-service
     volumes:
