@@ -4,7 +4,7 @@ services:
   bee-health-gateway:
     build:
       context: docker/app/gateway
-      dockerfile: docker/app/gateway/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-gateway:latest
     container_name: bee-health-gateway
     env_file:
@@ -16,7 +16,7 @@ services:
   bee-health-admin:
     build:
       context: docker/app/admin
-      dockerfile: docker/app/admin/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-admin:latest
     container_name: bee-health-admin
     env_file:
@@ -28,7 +28,7 @@ services:
   bee-health-hospital:
     build:
       context: docker/app/hospital
-      dockerfile: docker/app/hospital/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-hospital:latest
     container_name: bee-health-hospital
     env_file:
@@ -40,7 +40,7 @@ services:
   bee-health-member:
     build:
       context: docker/app/member
-      dockerfile: docker/app/member/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-member:latest
     container_name: bee-health-member
     env_file:
@@ -52,7 +52,7 @@ services:
   bee-health-message:
     build:
       context: docker/app/message
-      dockerfile: docker/app/message/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-message:latest
     container_name: bee-health-message
     env_file:
@@ -64,7 +64,7 @@ services:
   bee-health-order:
     build:
       context: docker/app/order
-      dockerfile: docker/app/order/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-order:latest
     container_name: bee-health-order
     env_file:
@@ -76,7 +76,7 @@ services:
   bee-health-search:
     build:
       context: docker/app/search
-      dockerfile: docker/app/search/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-search:latest
     container_name: bee-health-search
     env_file:
@@ -88,7 +88,7 @@ services:
   bee-health-third-party:
     build:
       context: docker/app/third-party
-      dockerfile: docker/app/third-party/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-third-party:latest
     container_name: bee-health-third-party
     env_file:
@@ -100,7 +100,7 @@ services:
   bee-health-topic:
     build:
       context: docker/app/topic
-      dockerfile: docker/app/topic/Dockerfile
+      dockerfile: Dockerfile
     image: bee-health-topic:latest
     container_name: bee-health-topic
     env_file:
