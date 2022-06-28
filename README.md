@@ -88,8 +88,9 @@ bee-health
    cd mobile-health-admin
    ```
 
+   >  修改 `BASE_API_HOST` 环境变量
+
    ```bash
-   # 修改 BASE_API_HOST 环境变量
    vim docker-compose.yml
    ```
 
@@ -113,8 +114,9 @@ bee-health
    cd mobile-health-app
    ```
 
+   > 修改 `BASE_API_HOST` 环境变量
+
    ```bash
-   # 修改 BASE_API_HOST 环境变量
    vim docker-compose.yml
    ```
 
