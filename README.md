@@ -56,9 +56,13 @@ bee-health
 
 2. 部署组件
 
+   > 提示：如果 Nacos 服务无法访问，可以使用 `docker restart <container_id>` 命令重启服务
+
    ```bash
    cd mobile-health
-   
+   ```
+
+   ```shell
    docker-compose -f docker-compose-e.yml up -d
    ```
 
@@ -82,6 +86,9 @@ bee-health
 
    ```bash
    cd mobile-health-admin
+   ```
+
+   ```bash
    # 修改 BASE_API_HOST 环境变量
    vim docker-compose.yml
    ```
@@ -104,6 +111,9 @@ bee-health
 
    ```bash
    cd mobile-health-app
+   ```
+
+   ```bash
    # 修改 BASE_API_HOST 环境变量
    vim docker-compose.yml
    ```
