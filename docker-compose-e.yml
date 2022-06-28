@@ -1,0 +1,103 @@
+version: "3.9"
+
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+    container_name: elasticsearch
+    env_file:
+      - docker/env/elasticsearch/env/elasticsearch.env
+    volumes:
+      - ./docker/env/elasticsearch/volumes/elasticsearch/data:/usr/share/elasticsearch/data
+      - ./docker/env/elasticsearch/volumes/elasticsearch/config:/usr/share/elasticsearch/config
+      - ./docker/env/elasticsearch/volumes/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+      - ./docker/env/elasticsearch/volumes/elasticsearch/logs:/usr/share/elasticsearch/logs
+    networks:
+      - bee-health
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    restart: always
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.16.3
+    container_name: kibana
+    depends_on:
+      - es
+    networks:
+      - bee-health
+    ports:
+      - "5601:5601"
+    restart: always
+  nginx:
+    image: nginx:1.21.6
+    container_name: nginx
+    volumes:
+      - ./docker/env/nginx/volumes/nginx/logs:/var/log/nginx
+      - ./docker/env/nginx/volumes/nginx/html:/usr/share/nginx/html
+      - ./docker/env/nginx/volumes/nginx/conf.d:/etc/nginx/conf.d
+      - ./docker/env/nginx/volumes/nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - bee-health
+    ports:
+      - "8080:80"
+      - "8081:443"
+    restart: always
+  redis:
+    image: redis:6
+    container_name: redis
+    volumes:
+      - ./docker/env/redis/volumes/redis/data:/data
+      - ./docker/env/redis/volumes/redis/conf:/usr/local/etc/redis
+    networks:
+      - bee-health
+    ports:
+      - "6379:6379"
+    command: redis-server /usr/local/etc/redis/redis.conf
+    restart: always
+  mysql-app:
+    image: mysql:5.7
+    container_name: mysql-app
+    env_file:
+      - docker/env/mysql-app/env/mysql.env
+    volumes:
+      - ./docker/env/mysql-app/volumes/mysql/data:/var/lib/mysql
+      - ./docker/env/mysql-app/volumes/mysql/conf:/etc/mysql
+      - ./docker/env/mysql-app/sql:/docker-entrypoint-initdb.d/
+    networks:
+      - bee-health
+    ports:
+      - "3333:3306"
+    restart: always
+  nacos:
+    image: nacos/nacos-server:v2.0.4
+    container_name: nacos-standalone-mysql
+    env_file:
+      - docker/env/nacos/env/nacos-standalone-mysql.env
+    volumes:
+      - ./docker/env/nacos/volumes/nacos/standalone-logs/:/home/nacos/logs
+      - ./docker/env/nacos/volumes/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties
+    networks:
+      - bee-health
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9555:9555"
+    depends_on:
+      - mysql-nacos
+    restart: always
+  mysql-nacos:
+    image: nacos/nacos-mysql:8.0.16
+    container_name: mysql-nacos-standalone
+    env_file:
+      - docker/env/nacos/env/mysql.env
+    volumes:
+      - ./docker/env/nacos/volumes/mysql/data:/var/lib/mysql
+      - ./docker/env/nacos/sql:/docker-entrypoint-initdb.d/
+    networks:
+      - bee-health
+    ports:
+      - "3306:3306"
+    restart: always
+
+networks:
+  bee-health:
+    name: bee-health

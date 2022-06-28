@@ -1,0 +1,20 @@
+FROM openjdk:11.0.15-oraclelinux7
+
+ENV JAR_FILE=bee-health-third-party.jar
+
+ENV SPRING_PROFILES_ACTIVE=prod
+
+ENV NACOS_SERVICE_HOST=localhost
+ENV NACOS_SERVICE_PORT=8848
+
+ENV JVM_XMS=100m
+ENV JVM_XMX=100m
+ENV JVM_USER_TIMEZONE=GMT+8
+
+EXPOSE 7008
+
+WORKDIR /app
+
+COPY ./${JAR_FILE} ./
+
+ENTRYPOINT java -Xmx${JVM_XMX} -Xms${JVM_XMS} -Duser.timezone=${JVM_USER_TIMEZONE} -jar ${JAR_FILE} -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}

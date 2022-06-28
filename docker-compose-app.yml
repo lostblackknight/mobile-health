@@ -1,0 +1,115 @@
+version: "3.9"
+
+services:
+  bee-health-gateway:
+    build:
+      context: docker/app/gateway
+      dockerfile: docker/app/gateway/Dockerfile
+    image: bee-health-gateway:latest
+    container_name: bee-health-gateway
+    env_file:
+      - docker/app/gateway/env/bee-health-gateway.env
+    networks:
+      - bee-health
+    ports:
+      - "7001:7001"
+  bee-health-admin:
+    build:
+      context: docker/app/admin
+      dockerfile: docker/app/admin/Dockerfile
+    image: bee-health-admin:latest
+    container_name: bee-health-admin
+    env_file:
+      - docker/app/admin/env/bee-health-admin.env
+    networks:
+      - bee-health
+    ports:
+      - "7002:7002"
+  bee-health-hospital:
+    build:
+      context: docker/app/hospital
+      dockerfile: docker/app/hospital/Dockerfile
+    image: bee-health-hospital:latest
+    container_name: bee-health-hospital
+    env_file:
+      - docker/app/hospital/env/bee-health-hospital.env
+    networks:
+      - bee-health
+    ports:
+      - "7003:7003"
+  bee-health-member:
+    build:
+      context: docker/app/member
+      dockerfile: docker/app/member/Dockerfile
+    image: bee-health-member:latest
+    container_name: bee-health-member
+    env_file:
+      - docker/app/member/env/bee-health-member.env
+    networks:
+      - bee-health
+    ports:
+      - "7004:7004"
+  bee-health-message:
+    build:
+      context: docker/app/message
+      dockerfile: docker/app/message/Dockerfile
+    image: bee-health-message:latest
+    container_name: bee-health-message
+    env_file:
+      - docker/app/message/env/bee-health-message.env
+    networks:
+      - bee-health
+    ports:
+      - "7005:7005"
+  bee-health-order:
+    build:
+      context: docker/app/order
+      dockerfile: docker/app/order/Dockerfile
+    image: bee-health-order:latest
+    container_name: bee-health-order
+    env_file:
+      - docker/app/order/env/bee-health-order.env
+    networks:
+      - bee-health
+    ports:
+      - "7006:7006"
+  bee-health-search:
+    build:
+      context: docker/app/search
+      dockerfile: docker/app/search/Dockerfile
+    image: bee-health-search:latest
+    container_name: bee-health-search
+    env_file:
+      - docker/app/search/env/bee-health-search.env
+    networks:
+      - bee-health
+    ports:
+      - "7007:7007"
+  bee-health-third-party:
+    build:
+      context: docker/app/third-party
+      dockerfile: docker/app/third-party/Dockerfile
+    image: bee-health-third-party:latest
+    container_name: bee-health-third-party
+    env_file:
+      - docker/app/third-party/env/bee-health-third-party.env
+    networks:
+      - bee-health
+    ports:
+      - "7008:7008"
+  bee-health-topic:
+    build:
+      context: docker/app/topic
+      dockerfile: docker/app/topic/Dockerfile
+    image: bee-health-topic:latest
+    container_name: bee-health-topic
+    env_file:
+      - docker/app/topic/env/bee-health-topic.env
+    networks:
+      - bee-health
+    ports:
+      - "7009:7009"
+
+networks:
+  bee-health:
+    external: true
