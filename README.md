@@ -134,32 +134,38 @@ bee-health
 
    ![image-20220628181931980](https://s2.loli.net/2022/06/28/CqF6MiU2cvTwzOf.png)
 
-2. 启动项目 `bee-health-mock` ，发送请求。(推荐使用 Postman 发送)
+2. 启动项目 `bee-health-mock` ，发送 GET 请求。(推荐使用 Postman 发送)
 
    ```tex
-   GET http://localhost:7011/hospitals/upload?clientId=1a903469ecdb481ea05651be04312ad0&secret=d6b382c1-2524-49d5-b1dc-2c01790bbbd8&hospitalName=北京天使儿童医院
+   http://localhost:7011/hospitals/upload?clientId=1a903469ecdb481ea05651be04312ad0&secret=d6b382c1-2524-49d5-b1dc-2c01790bbbd8&hospitalName=北京天使儿童医院
+   ```
    
-   GET http://localhost:7011/hospitals/upload?clientId=cd50350b4fa84d2b87d5cb6f4342b7b2&secret=a07ada8f-4f82-4af1-aafc-7d7948198a9e&hospitalName=太原肤康中医皮肤病医院
+   ```
+   http://localhost:7011/hospitals/upload?clientId=cd50350b4fa84d2b87d5cb6f4342b7b2&secret=a07ada8f-4f82-4af1-aafc-7d7948198a9e&hospitalName=太原肤康中医皮肤病医院
    ```
 
 ### 上传科室数据到ES
 
-1. 启动项目 `bee-health-mock` ，发送请求。
+1. 启动项目 `bee-health-mock` ，发送 GET 请求。
 
    ```tex
-   GET http://localhost:7011/depts/upload?clientId=1a903469ecdb481ea05651be04312ad0&secret=d6b382c1-2524-49d5-b1dc-2c01790bbbd8&hospitalName=北京天使儿童医院
+   http://localhost:7011/depts/upload?clientId=1a903469ecdb481ea05651be04312ad0&secret=d6b382c1-2524-49d5-b1dc-2c01790bbbd8&hospitalName=北京天使儿童医院
+   ```
    
-   GET http://localhost:7011/depts/upload?clientId=cd50350b4fa84d2b87d5cb6f4342b7b2&secret=a07ada8f-4f82-4af1-aafc-7d7948198a9e&hospitalName=太原肤康中医皮肤病医院
+   ```
+   http://localhost:7011/depts/upload?clientId=cd50350b4fa84d2b87d5cb6f4342b7b2&secret=a07ada8f-4f82-4af1-aafc-7d7948198a9e&hospitalName=太原肤康中医皮肤病医院
    ```
 
 ### 上传排班数据到ES
 
-1. 启动项目 `bee-health-mock` ，发送请求。
+1. 启动项目 `bee-health-mock` ，发送 GET 请求。
 
    ```tex
-   GET http://localhost:7011/schedules/upload?clientId=1a903469ecdb481ea05651be04312ad0&secret=d6b382c1-2524-49d5-b1dc-2c01790bbbd8&hospitalName=北京天使儿童医院
+   http://localhost:7011/schedules/upload?clientId=1a903469ecdb481ea05651be04312ad0&secret=d6b382c1-2524-49d5-b1dc-2c01790bbbd8&hospitalName=北京天使儿童医院
+   ```
    
-   GET http://localhost:7011/schedules/upload?clientId=cd50350b4fa84d2b87d5cb6f4342b7b2&secret=a07ada8f-4f82-4af1-aafc-7d7948198a9e&hospitalName=太原肤康中医皮肤病医院
+   ```
+   http://localhost:7011/schedules/upload?clientId=cd50350b4fa84d2b87d5cb6f4342b7b2&secret=a07ada8f-4f82-4af1-aafc-7d7948198a9e&hospitalName=太原肤康中医皮肤病医院
    ```
 
 ### 上传文章数据到ES
